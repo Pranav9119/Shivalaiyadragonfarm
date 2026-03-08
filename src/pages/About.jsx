@@ -14,8 +14,8 @@ const stats = [
 ]
 
 const timeline = [
+  { year: '2016', titleKey: 'about.timeline.2016Title', descKey: 'about.timeline.2016Desc' },
   { year: '2018', titleKey: 'about.timeline.2018Title', descKey: 'about.timeline.2018Desc' },
-  { year: '2021', titleKey: 'about.timeline.2021Title', descKey: 'about.timeline.2021Desc' },
   { year: '2022', titleKey: 'about.timeline.2022Title', descKey: 'about.timeline.2022Desc' },
   { year: '2023', titleKey: 'about.timeline.2023Title', descKey: 'about.timeline.2023Desc' },
   { year: '2024', titleKey: 'about.timeline.2024Title', descKey: 'about.timeline.2024Desc' },
@@ -80,7 +80,7 @@ export default function About() {
             <h1 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-8 tracking-tight">
               {t('about.cultivatingExcellence')}
               <span className="block text-dragon-pink-light mt-4 italic font-normal text-4xl sm:text-5xl">
-                {t('about.since2018')}
+                {t('about.since2016')}
               </span>
             </h1>
             <p className="text-xl text-cream-dark/80 max-w-3xl mx-auto leading-relaxed">

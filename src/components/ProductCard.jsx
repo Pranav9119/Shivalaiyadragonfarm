@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 
-export default function ProductCard({ titleKey, title, description, image, variant = 'pink', delay = 0, onClick, layoutId }) {
+export default function ProductCard({ titleKey, title, description, image, variant = 'pink', delay = 0, onClick, layoutId, imageStyle = '' }) {
   const { t } = useTranslation()
   const displayTitle = titleKey ? t(titleKey) : title
   const displayDesc = description
@@ -36,7 +36,7 @@ export default function ProductCard({ titleKey, title, description, image, varia
               layoutId={layoutId ? `img-${layoutId}` : undefined}
               src={image}
               alt={displayTitle}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${imageStyle}`}
             />
           ) : (
             <span className="text-8xl opacity-50 group-hover:scale-110 transition-transform duration-700">🐉</span>

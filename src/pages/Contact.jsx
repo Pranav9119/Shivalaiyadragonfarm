@@ -33,7 +33,7 @@ export default function Contact() {
           <p className="text-dragon-pink-light font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up">
             {t('contact.getInTouch')}
           </p>
-          <h1 className="font-serif text-5xl sm:text-6xl font-bold text-white mb-6 animate-scale-up">
+          <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold text-white mb-6 drop-shadow-2xl">
             {t('contact.contactUs')}
           </h1>
           <p className="text-xl text-cream-dark/90 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '100ms' }}>

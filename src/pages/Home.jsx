@@ -12,7 +12,7 @@ const allProducts = [
   { titleKey: 'products.mexicanRed', descKey: 'products.mexicanRedDesc', variant: 'pink', image: '/varieties/mexican-red.webp' },
   { titleKey: 'products.malaysianRed', descKey: 'products.malaysianRedDesc', variant: 'pink', image: '/varieties/malaysian-red.jpg' },
   { titleKey: 'products.jumboRed', descKey: 'products.jumboRedDesc', variant: 'pink', image: '/varieties/jumbo-red.jpg' },
-  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/israelian-yellow.jpg' },
+  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/isralian-yellow.png' },
   { titleKey: 'products.americanBeauty', descKey: 'products.americanBeautyDesc', variant: 'pink', image: '/varieties/american-beauty.jpg' },
   { titleKey: 'products.cVariety', descKey: 'products.cVarietyDesc', variant: 'pink', image: '/varieties/c-variety.jpg' },
   { titleKey: 'products.dragonJam', descKey: 'products.dragonJamDesc', variant: 'pink', image: '/varieties/dragon-jam.jpg' },

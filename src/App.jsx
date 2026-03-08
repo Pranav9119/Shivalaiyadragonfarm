@@ -31,7 +31,7 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream font-sans lg:cursor-none">
+    <div className="flex flex-col min-h-screen font-sans bg-cream overflow-x-hidden w-full relative">
       <CustomCursor />
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loader" />}
@@ -40,7 +40,7 @@ function App() {
       <ScrollToTop />
       <BackToTop />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-grow w-full max-w-[100vw] overflow-hidden">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />

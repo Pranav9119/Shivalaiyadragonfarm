@@ -14,7 +14,7 @@ const WhatsAppButton = () => {
             animate={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="fixed bottom-28 right-8 z-40 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-glow-lg transition-shadow overflow-hidden group"
+            className="fixed bottom-20 right-4 md:bottom-28 md:right-8 z-40 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-glow-lg transition-shadow overflow-hidden group"
             aria-label="Chat on WhatsApp"
         >
             {/* Pulse Effect */}

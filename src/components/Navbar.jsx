@@ -62,7 +62,7 @@ export default function Navbar() {
         <div className={`flex justify-between items-center transition-all duration-700 ease-in-out ${isScrolled ? 'h-16' : 'h-20'
           }`}>
           {/* Logo with Magnetic Hover Effect */}
-          <Link to="/" className="flex items-center gap-3 group relative z-10">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group relative z-10 shrink-0">
             <motion.div
               whileHover={{ scale: 1.1, rotate: 3 }}
               whileTap={{ scale: 0.95 }}
@@ -71,7 +71,7 @@ export default function Navbar() {
               <img
                 src="/logo.png"
                 alt="Shivalaiya Dragon Farm Logo"
-                className={`w-auto object-contain transition-all duration-700 ease-in-out ${isScrolled ? 'h-9' : 'h-12'
+                className={`w-auto object-contain transition-all duration-700 ease-in-out ${isScrolled ? 'h-8 sm:h-9' : 'h-10 sm:h-12'
                   }`}
               />
               <motion.div
@@ -81,8 +81,8 @@ export default function Navbar() {
             </motion.div>
             <motion.span
               whileHover={{ x: 5 }}
-              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink ${isScrolled ? 'text-xl' : 'text-2xl'
-                }`}
+              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${isScrolled ? 'text-sm sm:text-xl' : 'text-base sm:text-2xl'
+                } max-w-[120px] sm:max-w-none`}
             >
               Shivalaiya Dragon Farm
             </motion.span>
@@ -135,12 +135,12 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center gap-1 sm:gap-2">
             <LanguageSwitcher />
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-all duration-300 relative group"
+              className="p-1.5 sm:p-2.5 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-all duration-300 relative group"
               aria-label="Toggle menu"
             >
               <div className="absolute inset-0 bg-dragon-pink/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />

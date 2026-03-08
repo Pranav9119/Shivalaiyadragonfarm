@@ -32,7 +32,9 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-cream overflow-x-hidden w-full relative">
-      <CustomCursor />
+      <div className="hidden md:block">
+        <CustomCursor />
+      </div>
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loader" />}
       </AnimatePresence>

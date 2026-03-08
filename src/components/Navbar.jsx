@@ -82,7 +82,7 @@ export default function Navbar() {
             <motion.span
               whileHover={{ x: 5 }}
               className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${isScrolled ? 'text-sm sm:text-xl' : 'text-base sm:text-2xl'
-                } max-w-[120px] sm:max-w-none`}
+                } max-w-[140px] sm:max-w-none whitespace-nowrap tracking-tighter sm:tracking-normal`}
             >
               Shivalaiya Dragon Farm
             </motion.span>

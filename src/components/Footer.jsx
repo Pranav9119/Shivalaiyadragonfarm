@@ -29,7 +29,7 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Shivalaiya Dragon Farm Logo"
-                className="h-10 w-auto object-contain brightness-0 invert"
+                className="h-10 w-auto object-contain"
               />
               <h3 className="font-serif text-2xl font-semibold text-dragon-pink-light">
                 {t('footer.brand')}

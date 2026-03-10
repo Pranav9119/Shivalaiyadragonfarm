@@ -163,7 +163,7 @@ export default function Home() {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+        <div className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 text-white/60 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
             <motion.div
               animate={{

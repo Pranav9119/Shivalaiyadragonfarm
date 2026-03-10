@@ -74,6 +74,33 @@ export default function Footer() {
                   {contactInfo.phone}
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@coimbatoreshivalaiyadragon4635"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-dragon-pink-light transition-colors"
+                >
+                  <span
+                    className="inline-flex h-6 w-8 items-center justify-center rounded-md bg-red-600"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      className="h-3 w-3 text-white"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-sm font-medium">YouTube Channel</span>
+                    <span className="text-xs text-cream-dark/80">
+                      youtube.com/@coimbatoreshivalaiyadragon4635
+                    </span>
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

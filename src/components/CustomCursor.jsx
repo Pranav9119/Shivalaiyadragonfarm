@@ -35,22 +35,23 @@ const CustomCursor = () => {
     const ringY = useSpring(mouseY, springConfig)
 
     useEffect(() => {
-        let lastMove = 0
+        let lastSeed = 0
         const handleMouseMove = (e) => {
             if (!isVisible) setIsVisible(true)
             mouseX.set(e.clientX)
             mouseY.set(e.clientY)
 
             const now = Date.now()
-            if (now - lastMove > 250) {
+            if (now - lastSeed > 80) {
                 const newSeed = {
-                    id: now,
+                    id: now + Math.random(),
                     x: e.clientX,
                     y: e.clientY,
-                    drift: (Math.random() - 0.5) * 30
+                    drift: (Math.random() - 0.5) * 40,
+                    rotation: Math.random() * 360
                 }
-                setSeeds(prev => [...prev.slice(-5), newSeed])
-                lastMove = now
+                setSeeds(prev => [...prev.slice(-8), newSeed])
+                lastSeed = now
             }
         }
 
@@ -90,26 +91,27 @@ const CustomCursor = () => {
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
-            {/* Falling Seeds - Optimized count */}
+
+            {/* Falling Seeds */}
             {seeds.map(seed => (
                 <motion.div
                     key={seed.id}
-                    initial={{ x: seed.x, y: seed.y, opacity: 1, scale: 1 }}
+                    initial={{ x: seed.x, y: seed.y, opacity: 0.9, scale: 1, rotate: seed.rotation }}
                     animate={{
                         x: seed.x + seed.drift,
-                        y: seed.y + 80,
+                        y: seed.y + 100,
                         opacity: 0,
-                        scale: 0.5,
-                        rotate: 180
+                        scale: 0.4,
+                        rotate: seed.rotation + 180
                     }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="fixed w-1 h-1 bg-black rounded-full transform-gpu"
+                    transition={{ duration: 1.0, ease: "easeOut" }}
+                    className="fixed w-1.5 h-2 bg-gray-900 rounded-full transform-gpu"
+                    style={{ translateX: '-50%', translateY: '-50%' }}
                     onAnimationComplete={() => {
                         setSeeds(prev => prev.filter(s => s.id !== seed.id))
                     }}
                 />
             ))}
-
             {/* Dragon Fruit Icon - GPU Accelerated */}
             <motion.div
                 className="fixed w-6 h-6 flex items-center justify-center transform-gpu"
@@ -148,27 +150,7 @@ const CustomCursor = () => {
                 </AnimatePresence>
             </motion.div>
 
-            {/* Trailing Ring - GPU Accelerated */}
-            <motion.div
-                className="fixed border-2 rounded-full transform-gpu"
-                animate={{
-                    width: isHovered ? (cursorText ? 60 : 44) : 28,
-                    height: isHovered ? (cursorText ? 60 : 44) : 28,
-                    backgroundColor: isHovered
-                        ? (cursorColor ? `${cursorColor}10` : 'rgba(233, 30, 140, 0.05)')
-                        : 'transparent',
-                    borderColor: isHovered
-                        ? (cursorColor || '#E91E8C66') // Default dragon-pink/40
-                        : '#E91E8C66'
-                }}
-                style={{
-                    x: ringX,
-                    y: ringY,
-                    translateX: '-50%',
-                    translateY: '-50%',
-                    willChange: 'transform'
-                }}
-            />
+
         </div>
     )
 }

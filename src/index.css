@@ -12,6 +12,16 @@
   --color-cream-dark: #f0ebe3;
 }
 
+/* Hide default cursor on desktop when using CustomCursor */
+@media (pointer: fine) {
+  html, body, *,
+  *::before, *::after,
+  a, button, input, textarea, select, [role="button"],
+  .cursor-pointer, .cursor-default, .cursor-auto, .cursor-text, .cursor-grab {
+    cursor: none !important;
+  }
+}
+
 /* Enhanced Animations */
 @keyframes fadeInUp {
   from {

@@ -146,37 +146,29 @@ export default function Navbar() {
             >
               <div className="absolute inset-0 bg-dragon-pink/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
 
-              {/* Spinning Hamburger Icon */}
-              <motion.svg
-                animate={{ rotate: isOpen ? 180 : 0, scale: isOpen ? 1.1 : 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                className="w-6 h-6 relative z-10"
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <AnimatePresence mode='wait'>
                   {isOpen ? (
                     <motion.path
                       key="close"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      exit={{ pathLength: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
                       strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12"
                     />
                   ) : (
                     <motion.path
                       key="menu"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      exit={{ pathLength: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
                       strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16"
                     />
                   )}
                 </AnimatePresence>
-              </motion.svg>
+              </svg>
             </motion.button>
           </div>
         </div>

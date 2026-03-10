@@ -45,9 +45,10 @@ export default function Navbar() {
       className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 transition-all duration-700 ease-in-out"
     >
       {/* Background Pill Container */}
-      <div className={`absolute inset-0 rounded-full overflow-hidden transition-all duration-700 ease-in-out -z-10 ${isScrolled
-        ? 'bg-white/80 backdrop-blur-2xl shadow-2xl border border-dragon-pink/20'
-        : 'bg-white/70 backdrop-blur-xl shadow-xl border border-cream-dark/40'
+      <div className={`absolute inset-0 overflow-hidden transition-all duration-700 ease-in-out -z-10 ${isOpen ? 'rounded-[2rem]' : 'rounded-full'
+        } ${isScrolled || isOpen
+          ? 'bg-white/80 backdrop-blur-2xl shadow-2xl border border-dragon-pink/20'
+          : 'bg-white/70 backdrop-blur-xl shadow-xl border border-cream-dark/40'
         }`}>
         {/* Scroll Progress Bar */}
         <motion.div

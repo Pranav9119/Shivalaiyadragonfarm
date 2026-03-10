@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -21,6 +22,7 @@ import BottomNav from './components/BottomNav'
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const location = useLocation()
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     // Simulate initial loading time
@@ -30,6 +32,11 @@ function App() {
 
     return () => clearTimeout(timer)
   }, [])
+
+  // Update browser tab title when language changes
+  useEffect(() => {
+    document.title = t('home.brand')
+  }, [i18n.language, t])
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-cream overflow-x-hidden w-full relative">

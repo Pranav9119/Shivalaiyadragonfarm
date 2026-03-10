@@ -184,10 +184,10 @@ export default function Home() {
       {/* Glassmorphic Stats Row */}
       <section className="relative -mt-16 z-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="glass border border-white/50 rounded-[2.5rem] p-8 sm:p-12 shadow-2xl overflow-hidden relative group">
+          <div className="rounded-[2.5rem] p-8 sm:p-12 shadow-2xl overflow-hidden relative group bg-gradient-to-r from-white/85 via-cream/80 to-white/85 backdrop-blur-2xl border border-cream-dark/70">
             {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-dragon-pink/5 rounded-full blur-3xl -mr-32 -mt-32 transition-colors group-hover:bg-dragon-pink/10" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-dragon-green/5 rounded-full blur-3xl -ml-32 -mb-32 transition-colors group-hover:bg-dragon-green/10" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-dragon-pink/8 rounded-full blur-3xl -mr-32 -mt-32 transition-colors group-hover:bg-dragon-pink/12" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-dragon-green/8 rounded-full blur-3xl -ml-32 -mb-32 transition-colors group-hover:bg-dragon-green/12" />
             <BackgroundParticles count={15} color="bg-dragon-pink" />
             <BackgroundParticles count={10} color="bg-dragon-green" />
 
@@ -201,11 +201,11 @@ export default function Home() {
                 <ScrollReveal key={stat.key} delay={index * 0.1}>
                   <div className="text-center group/item">
                     <div className="flex flex-col items-center">
-                      <div className="text-4xl sm:text-5xl font-serif font-bold text-dragon-green mb-2 group-hover/item:text-dragon-pink transition-colors duration-300">
+                      <div className="text-4xl sm:text-5xl font-serif font-bold text-dragon-green-dark mb-2 group-hover/item:text-dragon-pink transition-colors duration-300">
                         <Counter value={stat.value} suffix={stat.suffix} delay={index * 0.1} />
                       </div>
-                      <div className="w-8 h-1 bg-gradient-to-r from-dragon-pink to-dragon-pink-light rounded-full mb-3 transform origin-left group-hover/item:scale-x-150 transition-transform duration-500" />
-                      <p className="text-dragon-green/70 font-medium tracking-wide uppercase text-xs sm:text-sm">
+                      <div className="w-8 h-1 bg-gradient-to-r from-dragon-green via-dragon-pink to-dragon-green-light rounded-full mb-3 transform origin-left group-hover/item:scale-x-150 transition-transform duration-500" />
+                      <p className="text-dragon-green/60 font-semibold tracking-widest uppercase text-[11px] sm:text-sm">
                         {stat.label}
                       </p>
                     </div>

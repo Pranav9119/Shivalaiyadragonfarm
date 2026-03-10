@@ -15,10 +15,11 @@ const navPaths = [
 ]
 
 export default function Navbar() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+  const isTamil = i18n.language?.startsWith('ta')
 
   // Scroll Progress Bar logic
   const { scrollYProgress } = useScroll()
@@ -82,26 +83,29 @@ export default function Navbar() {
             </motion.div>
             <motion.span
               whileHover={{ x: 5 }}
-              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${isScrolled ? 'text-xs sm:text-xl lg:text-2xl' : 'text-sm sm:text-2xl lg:text-3xl'
-                } whitespace-nowrap tracking-tighter sm:tracking-normal`}
+              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${
+                isTamil
+                  ? (isScrolled ? 'text-[10px] sm:text-base lg:text-lg' : 'text-xs sm:text-lg lg:text-xl')
+                  : (isScrolled ? 'text-xs sm:text-xl lg:text-2xl' : 'text-sm sm:text-2xl lg:text-3xl')
+              } whitespace-nowrap tracking-tighter sm:tracking-normal`}
             >
               Shivalaiya Dragon Farm
             </motion.span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation (show from xl to avoid label overlap with long Tamil labels) */}
+          <div className="hidden xl:flex items-center flex-1 justify-end min-w-0 gap-4 xl:gap-6">
             {navPaths.map((link, index) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="relative group py-2"
+                className="relative group py-2 shrink-0"
               >
                 <motion.span
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.05 }}
-                  className={`font-semibold text-sm tracking-wide transition-all duration-300 ${location.pathname === link.path
+                  className={`font-semibold text-xs lg:text-sm tracking-wide whitespace-nowrap transition-all duration-300 ${location.pathname === link.path
                     ? 'text-dragon-pink'
                     : 'text-dragon-green group-hover:text-dragon-pink'
                     }`}
@@ -129,14 +133,14 @@ export default function Navbar() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="ml-2 pl-6 border-l border-dragon-green/20"
+              className="ml-1 lg:ml-2 pl-3 lg:pl-6 border-l border-dragon-green/20 shrink-0"
             >
               <LanguageSwitcher />
             </motion.div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-1 sm:gap-2">
+          {/* Mobile / Tablet / Small Desktop Menu Button */}
+          <div className="flex xl:hidden items-center gap-1 sm:gap-2">
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -162,7 +166,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="md:hidden absolute top-full left-0 right-0 mx-3 mt-2 z-50 rounded-2xl overflow-hidden shadow-2xl border border-cream-dark/60"
+              className="xl:hidden absolute top-full left-0 right-0 mx-3 mt-2 z-50 rounded-2xl overflow-hidden shadow-2xl border border-cream-dark/60"
               style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(255,255,255,0.95)' }}
             >
               {/* Subtle gradient accent top bar */}

@@ -82,12 +82,10 @@ export default function Navbar() {
             </motion.div>
             <motion.span
               whileHover={{ x: 5 }}
-              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink ${isScrolled ? 'text-[10px] sm:text-xl' : 'text-xs sm:text-2xl'
-                } max-w-[120px] sm:max-w-none whitespace-normal sm:whitespace-nowrap tracking-tighter sm:tracking-normal leading-[1.1] sm:leading-tight line-clamp-2 sm:line-clamp-none`}
+              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${isScrolled ? 'text-xs sm:text-xl lg:text-2xl' : 'text-sm sm:text-2xl lg:text-3xl'
+                } whitespace-nowrap tracking-tighter sm:tracking-normal`}
             >
-              Shivalaiya
-              <br className="block sm:hidden" />
-              Dragon Farm
+              Shivalaiya Dragon Farm
             </motion.span>
           </Link>
 
@@ -148,42 +146,36 @@ export default function Navbar() {
             >
               <div className="absolute inset-0 bg-dragon-pink/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
 
-              {/* Smooth Morphing Hamburger Icon */}
-              <motion.svg 
-                className="w-6 h-6 relative z-10" 
-                viewBox="0 0 24 24" 
+              {/* Spinning Hamburger Icon */}
+              <motion.svg
+                animate={{ rotate: isOpen ? 180 : 0, scale: isOpen ? 1.1 : 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                className="w-6 h-6 relative z-10"
                 fill="none" 
-                stroke="currentColor"
-                animate={isOpen ? "open" : "closed"}
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
               >
-                <motion.path
-                  strokeLinecap="round"
-                  strokeWidth={2.5}
-                  variants={{
-                    closed: { d: "M4 6L20 6" },
-                    open: { d: "M6 18L18 6" }
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                />
-                <motion.path
-                  strokeLinecap="round"
-                  strokeWidth={2.5}
-                  d="M4 12L20 12"
-                  variants={{
-                    closed: { opacity: 1 },
-                    open: { opacity: 0 }
-                  }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.path
-                  strokeLinecap="round"
-                  strokeWidth={2.5}
-                  variants={{
-                    closed: { d: "M4 18L20 18" },
-                    open: { d: "M6 6L18 18" }
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                />
+                <AnimatePresence mode='wait'>
+                  {isOpen ? (
+                    <motion.path
+                      key="close"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={{ pathLength: 1, opacity: 1 }}
+                      exit={{ pathLength: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <motion.path
+                      key="menu"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={{ pathLength: 1, opacity: 1 }}
+                      exit={{ pathLength: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </AnimatePresence>
               </motion.svg>
             </motion.button>
           </div>

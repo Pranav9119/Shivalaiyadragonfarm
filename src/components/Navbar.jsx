@@ -154,101 +154,57 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Premium Full-Screen Mobile Menu */}
+        {/* Compact Mobile Dropdown Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={{
-                open: {
-                  opacity: 1,
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
-                },
-                closed: {
-                  opacity: 0,
-                  backdropFilter: "blur(0px)",
-                  WebkitBackdropFilter: "blur(0px)",
-                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 }
-                }
-              }}
-              className="md:hidden fixed inset-0 z-40 bg-white/90"
-              style={{ height: '100vh' }}
+              initial={{ opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden absolute top-full left-0 right-0 mx-3 mt-2 z-50 rounded-2xl overflow-hidden shadow-2xl border border-cream-dark/60"
+              style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(255,255,255,0.95)' }}
             >
-              {/* Decorative Abstract Backgrounds inside Menu */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-dragon-pink/10 rounded-full blur-[80px] -mr-48 -mt-48 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-dragon-green/10 rounded-full blur-[80px] -ml-48 -mb-48 pointer-events-none" />
+              {/* Subtle gradient accent top bar */}
+              <div className="h-0.5 bg-gradient-to-r from-dragon-green via-dragon-pink to-dragon-green-light" />
 
-              <div className="flex flex-col h-full justify-center px-8 relative z-10">
-                <motion.div
-                  variants={{
-                    open: {
-                      transition: { staggerChildren: 0.08, delayChildren: 0.2 }
-                    },
-                    closed: {
-                      transition: { staggerChildren: 0.05, staggerDirection: -1 }
-                    }
-                  }}
-                  className="flex flex-col gap-4"
-                >
-                  {navPaths.map((link) => (
-                    <div key={link.path} className="overflow-hidden">
-                      <motion.div
-                        variants={{
-                          open: { y: 0, opacity: 1, rotateZ: 0 },
-                          closed: { y: 40, opacity: 0, rotateZ: 2 }
-                        }}
-                        transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                      >
-                        <Link
-                          to={link.path}
-                          onClick={() => setIsOpen(false)}
-                          className={`block font-serif text-3xl sm:text-4xl font-bold py-2 transition-all duration-300 relative group overflow-hidden ${location.pathname === link.path
-                            ? 'text-dragon-pink'
-                            : 'text-dragon-green hover:text-dragon-pink'
-                            }`}
-                        >
-                          <span className="relative z-10 flex items-center gap-4">
-                            {location.pathname === link.path && (
-                              <motion.span
-                                layoutId="mobileActiveDot"
-                                className="w-2 h-2 rounded-full bg-dragon-pink block shrink-0"
-                              />
-                            )}
-                            {t(`nav.${link.key}`)}
-                          </span>
-                          
-                          {/* Hover sweep effect */}
-                          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-dragon-pink/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                        </Link>
-                      </motion.div>
-                    </div>
-                  ))}
-                </motion.div>
+              <div className="px-3 py-3">
+                {navPaths.map((link, index) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.045, duration: 0.2, ease: 'easeOut' }}
+                  >
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                        location.pathname === link.path
+                          ? 'text-white bg-gradient-to-r from-dragon-pink to-dragon-pink-light shadow-sm'
+                          : 'text-dragon-green hover:bg-dragon-green/5 hover:text-dragon-pink'
+                      }`}
+                    >
+                      {location.pathname === link.path && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
+                      )}
+                      {t(`nav.${link.key}`)}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
 
-                {/* Additional Menu Footer/Contact items */}
-                <motion.div
-                  variants={{
-                    open: { opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.5 } },
-                    closed: { opacity: 0, y: 20, transition: { duration: 0.3 } }
-                  }}
-                  className="mt-16 pt-8 border-t border-dragon-pink/20"
-                >
-                  <p className="text-sm font-semibold text-dragon-green/60 mb-4 uppercase tracking-widest text-center">
-                    Get in touch
-                  </p>
-                  <div className="flex justify-center gap-6">
-                    <a href="mailto:shivalaiyadragon@gmail.com" className="w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-xl hover:scale-110 hover:text-dragon-pink transition-all border border-cream-dark">
-                      📧
-                    </a>
-                    <a href="https://wa.me/918675522223" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-xl hover:scale-110 hover:text-green-500 transition-all border border-cream-dark">
-                      💬
-                    </a>
-                  </div>
-                </motion.div>
+              {/* Quick contact strip at bottom */}
+              <div className="px-4 py-2.5 border-t border-cream-dark/50 flex items-center justify-between">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-dragon-green/40">Quick Contact</span>
+                <div className="flex gap-2">
+                  <a href="mailto:shivalaiyadragon@gmail.com" className="w-7 h-7 rounded-full bg-dragon-pink/10 flex items-center justify-center text-sm hover:bg-dragon-pink hover:text-white transition-all">
+                    ✉️
+                  </a>
+                  <a href="https://wa.me/918675522223" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full bg-green-50 flex items-center justify-center text-sm hover:bg-green-500 hover:text-white transition-all">
+                    💬
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}

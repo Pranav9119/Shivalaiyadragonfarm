@@ -194,9 +194,9 @@ export default function Home() {
             <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               {[
                 { key: 'acres', value: 10, suffix: '+', label: t('about.stats.acres') },
-                { key: 'plants', value: 5000, suffix: '+', label: t('about.stats.trees') },
+                { key: 'plants', value: 20000, suffix: '+', label: t('about.stats.trees') },
                 { key: 'organic', value: 100, suffix: '%', label: t('about.stats.organicTitle') },
-                { key: 'customers', value: 500, suffix: '+', label: t('about.happyCustomers') },
+                { key: 'customers', value: 5000, suffix: '+', label: t('about.happyCustomers') },
               ].map((stat, index) => (
                 <ScrollReveal key={stat.key} delay={index * 0.1}>
                   <div className="text-center group/item">

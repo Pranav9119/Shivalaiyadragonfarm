@@ -8,7 +8,7 @@ import ScrollLine from '../components/ScrollLine'
 
 const stats = [
   { labelKey: 'about.stats.acres', value: 10, suffix: '+', icon: '🌳' },
-  { labelKey: 'about.stats.trees', value: 5000, suffix: '+', icon: '🌱' },
+  { labelKey: 'about.stats.trees', value: 20000, suffix: '+', icon: '🌱' },
   { labelKey: 'about.stats.harvest', value: 100, suffix: '%', icon: '📦' },
   { labelKey: 'about.stats.organicTitle', value: 100, suffix: '%', icon: '🛡️' },
 ]

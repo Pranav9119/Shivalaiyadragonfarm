@@ -59,7 +59,7 @@ export default function Navbar() {
         <div className="absolute inset-0 bg-gradient-to-r from-dragon-pink/5 via-transparent to-dragon-green/5 pointer-events-none" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-50">
         <div className={`flex justify-between items-center transition-all duration-700 ease-in-out ${isScrolled ? 'h-16' : 'h-20'
           }`}>
           {/* Logo with Magnetic Hover Effect */}
@@ -82,10 +82,12 @@ export default function Navbar() {
             </motion.div>
             <motion.span
               whileHover={{ x: 5 }}
-              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink leading-tight ${isScrolled ? 'text-sm sm:text-xl' : 'text-base sm:text-2xl'
-                } max-w-[140px] sm:max-w-none whitespace-nowrap tracking-tighter sm:tracking-normal`}
+              className={`font-serif font-bold text-dragon-green transition-all duration-700 ease-in-out group-hover:text-dragon-pink ${isScrolled ? 'text-[10px] sm:text-xl' : 'text-xs sm:text-2xl'
+                } max-w-[120px] sm:max-w-none whitespace-normal sm:whitespace-nowrap tracking-tighter sm:tracking-normal leading-[1.1] sm:leading-tight line-clamp-2 sm:line-clamp-none`}
             >
-              Shivalaiya Dragon Farm
+              Shivalaiya
+              <br className="block sm:hidden" />
+              Dragon Farm
             </motion.span>
           </Link>
 
@@ -141,72 +143,147 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-1.5 sm:p-2.5 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-all duration-300 relative group"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-all duration-300 relative group"
               aria-label="Toggle menu"
             >
               <div className="absolute inset-0 bg-dragon-pink/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
 
-              <svg className="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <AnimatePresence mode='wait'>
-                  {isOpen ? (
-                    <motion.path
-                      key="close"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      exit={{ pathLength: 0, opacity: 0 }}
-                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <motion.path
-                      key="menu"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      exit={{ pathLength: 0, opacity: 0 }}
-                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </AnimatePresence>
-              </svg>
+              {/* Smooth Morphing Hamburger Icon */}
+              <motion.svg 
+                className="w-6 h-6 relative z-10" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor"
+                animate={isOpen ? "open" : "closed"}
+              >
+                <motion.path
+                  strokeLinecap="round"
+                  strokeWidth={2.5}
+                  variants={{
+                    closed: { d: "M4 6L20 6" },
+                    open: { d: "M6 18L18 6" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+                <motion.path
+                  strokeLinecap="round"
+                  strokeWidth={2.5}
+                  d="M4 12L20 12"
+                  variants={{
+                    closed: { opacity: 1 },
+                    open: { opacity: 0 }
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.path
+                  strokeLinecap="round"
+                  strokeWidth={2.5}
+                  variants={{
+                    closed: { d: "M4 18L20 18" },
+                    open: { d: "M6 6L18 18" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              </motion.svg>
             </motion.button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Premium Full-Screen Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "circOut" }}
-              className="md:hidden overflow-hidden border-t border-dragon-pink/20"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: {
+                  opacity: 1,
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+                },
+                closed: {
+                  opacity: 0,
+                  backdropFilter: "blur(0px)",
+                  WebkitBackdropFilter: "blur(0px)",
+                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 }
+                }
+              }}
+              className="md:hidden fixed inset-0 z-40 bg-white/90"
+              style={{ height: '100vh' }}
             >
-              <div className="flex flex-col gap-2 py-5">
-                {navPaths.map((link, index) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Link
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`block font-semibold py-3 px-5 rounded-xl transition-all duration-300 relative overflow-hidden group ${location.pathname === link.path
-                        ? 'text-white bg-gradient-to-r from-dragon-pink to-dragon-pink-light shadow-lg'
-                        : 'text-dragon-green hover:text-dragon-pink hover:bg-dragon-pink/10'
-                        }`}
-                    >
-                      {location.pathname === link.path && (
-                        <motion.span
-                          layoutId="mobileActiveShimmer"
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"
-                        />
-                      )}
-                      <span className="relative z-10">{t(`nav.${link.key}`)}</span>
-                    </Link>
-                  </motion.div>
-                ))}
+              {/* Decorative Abstract Backgrounds inside Menu */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-dragon-pink/10 rounded-full blur-[80px] -mr-48 -mt-48 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-dragon-green/10 rounded-full blur-[80px] -ml-48 -mb-48 pointer-events-none" />
+
+              <div className="flex flex-col h-full justify-center px-8 relative z-10">
+                <motion.div
+                  variants={{
+                    open: {
+                      transition: { staggerChildren: 0.08, delayChildren: 0.2 }
+                    },
+                    closed: {
+                      transition: { staggerChildren: 0.05, staggerDirection: -1 }
+                    }
+                  }}
+                  className="flex flex-col gap-4"
+                >
+                  {navPaths.map((link) => (
+                    <div key={link.path} className="overflow-hidden">
+                      <motion.div
+                        variants={{
+                          open: { y: 0, opacity: 1, rotateZ: 0 },
+                          closed: { y: 40, opacity: 0, rotateZ: 2 }
+                        }}
+                        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                      >
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`block font-serif text-3xl sm:text-4xl font-bold py-2 transition-all duration-300 relative group overflow-hidden ${location.pathname === link.path
+                            ? 'text-dragon-pink'
+                            : 'text-dragon-green hover:text-dragon-pink'
+                            }`}
+                        >
+                          <span className="relative z-10 flex items-center gap-4">
+                            {location.pathname === link.path && (
+                              <motion.span
+                                layoutId="mobileActiveDot"
+                                className="w-2 h-2 rounded-full bg-dragon-pink block shrink-0"
+                              />
+                            )}
+                            {t(`nav.${link.key}`)}
+                          </span>
+                          
+                          {/* Hover sweep effect */}
+                          <div className="absolute inset-x-0 bottom-0 h-0.5 bg-dragon-pink/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+                        </Link>
+                      </motion.div>
+                    </div>
+                  ))}
+                </motion.div>
+
+                {/* Additional Menu Footer/Contact items */}
+                <motion.div
+                  variants={{
+                    open: { opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.5 } },
+                    closed: { opacity: 0, y: 20, transition: { duration: 0.3 } }
+                  }}
+                  className="mt-16 pt-8 border-t border-dragon-pink/20"
+                >
+                  <p className="text-sm font-semibold text-dragon-green/60 mb-4 uppercase tracking-widest text-center">
+                    Get in touch
+                  </p>
+                  <div className="flex justify-center gap-6">
+                    <a href="mailto:shivalaiyadragon@gmail.com" className="w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-xl hover:scale-110 hover:text-dragon-pink transition-all border border-cream-dark">
+                      📧
+                    </a>
+                    <a href="https://wa.me/918675522223" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center text-xl hover:scale-110 hover:text-green-500 transition-all border border-cream-dark">
+                      💬
+                    </a>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           )}

@@ -136,13 +136,13 @@ export default function Home() {
             {t('home.brand')}
           </p>
           <h1
-            className={`${isTamil ? 'font-sans text-4xl sm:text-5xl lg:text-6xl leading-[1.3]' : 'font-serif text-5xl sm:text-6xl lg:text-7xl'} font-bold text-white mb-6 animate-scale-up`}
+            className={`${isTamil ? 'font-sans text-3xl sm:text-4xl lg:text-6xl leading-[1.3]' : 'font-serif text-4xl sm:text-6xl lg:text-7xl'} font-bold text-white mb-6 animate-scale-up px-2 md:px-0`}
             style={{ animationDelay: '100ms' }}
           >
             {t('home.heroTitle')}
             <span className="block gradient-text mt-2">{t('home.heroSubtitle')}</span>
           </h1>
-          <p className={`${isTamil ? 'text-lg sm:text-xl leading-[1.8]' : 'text-xl leading-relaxed'} text-cream-dark/90 max-w-2xl mx-auto mb-10 animate-fade-in-up`} style={{ animationDelay: '200ms' }}>
+          <p className={`${isTamil ? 'text-base sm:text-xl leading-[1.8]' : 'text-lg sm:text-xl leading-relaxed'} text-cream-dark/90 max-w-2xl mx-auto mb-10 px-4 md:px-0 animate-fade-in-up`} style={{ animationDelay: '200ms' }}>
             {t('home.heroDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '300ms' }}>
@@ -235,9 +235,9 @@ export default function Home() {
         {/* Automatic Card-by-Card Showcase */}
         <div className="relative">
           <motion.div
-            className="flex gap-8 px-4"
+            className="flex"
             animate={{
-              x: [0, -200 * allProducts.length],
+              x: ["0%", "-50%"],
             }}
             transition={{
               duration: 40,
@@ -246,47 +246,51 @@ export default function Home() {
             }}
             style={{ width: 'max-content' }}
           >
-            {/* Double the list for seamless infinite scroll */}
-            {[...allProducts, ...allProducts].map((product, index) => {
-              const isPrimary = index < allProducts.length;
-              return (
-                <div
-                  key={`${product.titleKey}-${index}`}
-                  className="w-[300px] sm:w-[400px] group flex-shrink-0"
-                >
-                  <div className="relative h-[500px] rounded-[2.5rem] overflow-hidden border border-cream-dark transition-all duration-500 hover:shadow-glow-lg shadow-xl">
-                    <motion.img
-                      layoutId={isPrimary ? `img-${product.titleKey}` : undefined}
-                      src={product.image}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      alt={t(product.titleKey)}
-                    />
-                    <motion.div
-                      layoutId={isPrimary ? `bg-${product.titleKey}` : undefined}
-                      className="absolute inset-0 bg-gradient-to-t from-dragon-green via-dragon-green/20 to-transparent p-8 flex flex-col justify-end z-10"
+            {/* Double the list for seamless infinite scroll using two identical containers */}
+            {[0, 1].map((listIdx) => (
+              <div key={listIdx} className="flex gap-4 sm:gap-8 pr-4 sm:pr-8 pl-4 sm:pl-0">
+                {allProducts.map((product, index) => {
+                  const isPrimary = listIdx === 0;
+                  return (
+                    <div
+                      key={`${product.titleKey}-${index}`}
+                      className="w-[280px] sm:w-[400px] group flex-shrink-0"
                     >
-                      <motion.h3
-                        layoutId={isPrimary ? `title-${product.titleKey}` : undefined}
-                        className="font-serif text-2xl font-bold text-white mb-2"
-                      >
-                        {t(product.titleKey)}
-                      </motion.h3>
-                      <p className="text-white/80 text-sm line-clamp-2 mb-4">{t(product.descKey)}</p>
-                      <Link
-                        to="/products"
-                        state={{ fromHome: true, productId: product.titleKey, product }}
-                        className="inline-flex items-center gap-2 text-dragon-pink-light font-bold text-sm group-hover:gap-3 transition-all"
-                      >
-                        {t('process.learnMore')}
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </Link>
-                    </motion.div>
-                  </div>
-                </div>
-              );
-            })}
+                      <div className="relative h-[400px] sm:h-[500px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-cream-dark transition-all duration-500 hover:shadow-glow-lg shadow-xl">
+                        <motion.img
+                          layoutId={isPrimary ? `img-${product.titleKey}` : undefined}
+                          src={product.image}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          alt={t(product.titleKey)}
+                        />
+                        <motion.div
+                          layoutId={isPrimary ? `bg-${product.titleKey}` : undefined}
+                          className="absolute inset-0 bg-gradient-to-t from-dragon-green via-dragon-green/20 to-transparent p-6 sm:p-8 flex flex-col justify-end z-10"
+                        >
+                          <motion.h3
+                            layoutId={isPrimary ? `title-${product.titleKey}` : undefined}
+                            className="font-serif text-xl sm:text-2xl font-bold text-white mb-2"
+                          >
+                            {t(product.titleKey)}
+                          </motion.h3>
+                          <p className="text-white/80 text-xs sm:text-sm line-clamp-2 mb-4">{t(product.descKey)}</p>
+                          <Link
+                            to="/products"
+                            state={{ fromHome: true, productId: product.titleKey, product }}
+                            className="inline-flex items-center gap-2 text-dragon-pink-light font-bold text-sm group-hover:gap-3 transition-all"
+                          >
+                            {t('process.learnMore')}
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </Link>
+                        </motion.div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </motion.div>
 
           {/* Gradient Overlays for smooth edges */}

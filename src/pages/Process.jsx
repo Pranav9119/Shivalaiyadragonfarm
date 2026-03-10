@@ -168,7 +168,7 @@ export default function Process() {
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-dragon-pink font-bold tracking-[0.3em] uppercase text-xs mb-4">
             {t('process.fromSeedToTable')}
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-serif text-5xl sm:text-7xl font-bold text-dragon-green mb-8">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-serif text-4xl sm:text-7xl font-bold text-dragon-green mb-8">
             {t('process.ourFarmingProcess')}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -224,7 +224,7 @@ export default function Process() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs uppercase tracking-widest mb-6 border border-indigo-500/30">
               {t('process.step')} 04
             </span>
-            <h2 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+            <h2 className="font-serif text-4xl sm:text-7xl font-bold text-white mb-6 drop-shadow-lg">
               {t('process.nightBloomTitle')}
             </h2>
             <p className="text-indigo-200 text-xl sm:text-2xl font-medium tracking-wide mb-12 max-w-2xl mx-auto">

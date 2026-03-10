@@ -23,7 +23,7 @@ export default function Gallery() {
           <p className="text-dragon-pink-light font-medium tracking-widest uppercase text-sm mb-4">
             {t('gallery.visualJourney')}
           </p>
-          <h1 className="font-serif text-5xl sm:text-6xl font-bold text-white mb-6">
+          <h1 className="font-serif text-4xl sm:text-6xl font-bold text-white mb-6">
             {t('gallery.farmGallery')}
           </h1>
           <p className="text-xl text-cream-dark/90 max-w-2xl mx-auto">

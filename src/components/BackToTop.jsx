@@ -28,7 +28,7 @@ export default function BackToTop() {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40 p-3 md:p-4 rounded-full bg-gradient-to-br from-dragon-pink to-dragon-pink-dark text-white shadow-2xl hover:shadow-dragon-pink/50 hover:scale-110 transition-all duration-300 group animate-fade-in-up"
+                    className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-50 p-3 md:p-4 rounded-full bg-gradient-to-br from-dragon-pink to-dragon-pink-dark text-white shadow-2xl hover:shadow-dragon-pink/50 hover:scale-110 transition-all duration-300 group animate-fade-in-up"
                     aria-label="Back to top"
                 >
                     {/* Glow effect */}

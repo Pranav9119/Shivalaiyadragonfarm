@@ -131,7 +131,7 @@ export default function Products() {
             <div className="relative z-20 text-center px-4">
               <motion.h1
                 layoutId={`title-${transitionState.productId}`}
-                className={`${isTamil ? 'font-sans text-4xl sm:text-6xl lg:text-7xl leading-[1.3]' : 'font-serif text-5xl sm:text-7xl lg:text-8xl'} font-bold text-white mb-6 drop-shadow-2xl`}
+                className={`${isTamil ? 'font-sans text-3xl sm:text-5xl lg:text-6xl leading-[1.3]' : 'font-serif text-4xl sm:text-6xl lg:text-7xl'} font-bold text-white mb-6 drop-shadow-2xl`}
               >
                 {t(transitionState.product.titleKey)}
               </motion.h1>
@@ -154,7 +154,7 @@ export default function Products() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-serif text-5xl sm:text-6xl font-bold text-dragon-green mb-6"
+                className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-dragon-green mb-6"
               >
                 {t('products.premiumProducts')}
               </motion.h1>

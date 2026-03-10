@@ -76,9 +76,9 @@ export default function About() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold text-xs uppercase tracking-widest mb-6 border border-white/20 backdrop-blur-sm">
               {t('about.ourStory')}
             </span>
-            <h1 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-8 tracking-tight">
+            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
               {t('about.cultivatingExcellence')}
-              <span className="block text-dragon-pink-light mt-4 italic font-normal text-4xl sm:text-5xl">
+              <span className="block text-dragon-pink-light mt-4 italic font-normal text-3xl sm:text-5xl">
                 {t('about.since2016')}
               </span>
             </h1>

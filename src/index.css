@@ -22,6 +22,19 @@
   }
 }
 
+/* Mobile performance: reduce heavy visual effects on small screens */
+@media (max-width: 767px) {
+  /* Disable blur-heavy glass effects for performance */
+  .backdrop-blur-3xl, .backdrop-blur-2xl {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  /* Ensure bottom nav spacing is respected */
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 /* Enhanced Animations */
 @keyframes fadeInUp {
   from {

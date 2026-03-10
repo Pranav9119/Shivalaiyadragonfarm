@@ -16,6 +16,7 @@ import LoadingScreen from './components/LoadingScreen'
 import PageTransition from './components/PageTransition'
 import WhatsAppButton from './components/WhatsAppButton'
 import CustomCursor from './components/CustomCursor'
+import BottomNav from './components/BottomNav'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -42,7 +43,7 @@ function App() {
       <ScrollToTop />
       <BackToTop />
       <Navbar />
-      <main className="flex-grow w-full max-w-[100vw] overflow-hidden">
+      <main className="flex-grow w-full max-w-[100vw] overflow-hidden pb-16 md:pb-0">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
@@ -56,6 +57,7 @@ function App() {
         </AnimatePresence>
       </main>
       <WhatsAppButton />
+      <BottomNav />
       <Footer />
     </div>
   )

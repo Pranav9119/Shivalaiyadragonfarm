@@ -138,38 +138,19 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-1 sm:gap-2">
             <LanguageSwitcher />
-            <motion.button
-              whileTap={{ scale: 0.9 }}
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-all duration-300 relative group"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl text-dragon-green hover:bg-dragon-pink/10 hover:text-dragon-pink transition-colors duration-200"
               aria-label="Toggle menu"
             >
-              <div className="absolute inset-0 bg-dragon-pink/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-
-              <svg className="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <AnimatePresence mode='wait'>
-                  {isOpen ? (
-                    <motion.path
-                      key="close"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <motion.path
-                      key="menu"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </AnimatePresence>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
-            </motion.button>
+            </button>
           </div>
         </div>
 

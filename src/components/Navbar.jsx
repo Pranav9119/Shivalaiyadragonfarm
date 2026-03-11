@@ -87,9 +87,16 @@ export default function Navbar() {
                 isTamil
                   ? (isScrolled ? 'text-[10px] sm:text-base lg:text-lg' : 'text-xs sm:text-lg lg:text-xl')
                   : (isScrolled ? 'text-xs sm:text-xl lg:text-2xl' : 'text-sm sm:text-2xl lg:text-3xl')
-              } whitespace-nowrap tracking-tighter sm:tracking-normal`}
+              } tracking-tighter sm:tracking-normal`}
             >
-              Shivalaiya Dragon Farm
+              {isTamil ? (
+                <>
+                  <span className="block whitespace-nowrap">சிவாலயா டிராகன்</span>
+                  <span className="block whitespace-nowrap">பண்ணை</span>
+                </>
+              ) : (
+                <span className="whitespace-nowrap">{t('home.brand')}</span>
+              )}
             </motion.span>
           </Link>
 

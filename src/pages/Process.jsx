@@ -192,24 +192,16 @@ export default function Process() {
 
       {/* IMMERSIVE NIGHT BLOOM HIGHLIGHT */}
       <section className="relative py-40 bg-slate-950 overflow-hidden group">
-        {/* Starry Background */}
+        {/* Starry Background — CSS animations */}
         <div className="absolute inset-0 opacity-40">
-          {[...Array(30)].map((_, i) => (
-            <motion.div
+          {[...Array(15)].map((_, i) => (
+            <div
               key={i}
               className="absolute w-1 h-1 bg-white rounded-full"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                opacity: [0.2, 0.8, 0.2],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: Math.random() * 3 + 2,
-                repeat: Infinity,
-                delay: Math.random() * 5,
+                animation: `starTwinkle ${Math.random() * 3 + 2}s ease-in-out ${Math.random() * 5}s infinite`,
               }}
             />
           ))}

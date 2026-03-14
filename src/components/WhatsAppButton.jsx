@@ -17,11 +17,10 @@ const WhatsAppButton = () => {
             className="fixed bottom-24 right-4 md:bottom-28 md:right-8 z-50 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-lg transition-shadow overflow-hidden group"
             aria-label="Chat on WhatsApp"
         >
-            {/* Pulse Effect */}
-            <motion.div
-                animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            {/* Pulse Effect — CSS animation instead of framer-motion */}
+            <div
                 className="absolute inset-0 bg-[#25D366] rounded-full"
+                style={{ animation: 'whatsappPulse 2s ease-in-out infinite' }}
             />
 
             {/* Icon */}

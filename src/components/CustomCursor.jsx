@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion'
 
 const DragonFruitIcon = () => (
@@ -23,35 +23,51 @@ const CustomCursor = () => {
     const [cursorText, setCursorText] = useState('')
     const [cursorColor, setCursorColor] = useState('')
     const [isVisible, setIsVisible] = useState(false)
-    const [seeds, setSeeds] = useState([])
+
+    // Use ref for seeds to avoid re-renders on every seed spawn
+    const seedContainerRef = useRef(null)
+    const lastSeedRef = useRef(0)
 
     // Motion values for smooth tracking
     const mouseX = useMotionValue(0)
     const mouseY = useMotionValue(0)
 
-    // Spring physics for the trailing ring
-    const springConfig = { damping: 30, stiffness: 250 }
-    const ringX = useSpring(mouseX, springConfig)
-    const ringY = useSpring(mouseY, springConfig)
+    // Spawn a seed using DOM manipulation instead of React state
+    const spawnSeed = useCallback((x, y) => {
+        if (!seedContainerRef.current) return
+        const seed = document.createElement('div')
+        const drift = (Math.random() - 0.5) * 40
+        const rotation = Math.random() * 360
+
+        seed.className = 'fixed w-1.5 h-2 bg-gray-900 rounded-full'
+        seed.style.cssText = `
+            left: ${x}px;
+            top: ${y}px;
+            --seed-drift: ${drift}px;
+            --seed-rotate: ${rotation}deg;
+            animation: seedFall 1s ease-out forwards;
+            pointer-events: none;
+        `
+
+        seedContainerRef.current.appendChild(seed)
+
+        // Clean up after animation completes — no React state update needed
+        setTimeout(() => {
+            seed.remove()
+        }, 1000)
+    }, [])
 
     useEffect(() => {
-        let lastSeed = 0
         const handleMouseMove = (e) => {
             if (!isVisible) setIsVisible(true)
             mouseX.set(e.clientX)
             mouseY.set(e.clientY)
 
             const now = Date.now()
-            if (now - lastSeed > 80) {
-                const newSeed = {
-                    id: now + Math.random(),
-                    x: e.clientX,
-                    y: e.clientY,
-                    drift: (Math.random() - 0.5) * 40,
-                    rotation: Math.random() * 360
-                }
-                setSeeds(prev => [...prev.slice(-8), newSeed])
-                lastSeed = now
+            // Increased throttle from 150ms to 400ms to reduce falling seeds
+            if (now - lastSeedRef.current > 400) {
+                spawnSeed(e.clientX, e.clientY)
+                lastSeedRef.current = now
             }
         }
 
@@ -85,33 +101,16 @@ const CustomCursor = () => {
             document.removeEventListener('mouseleave', handleMouseLeave)
             document.removeEventListener('mouseenter', handleMouseEnter)
         }
-    }, [isVisible, mouseX, mouseY])
+    }, [isVisible, mouseX, mouseY, spawnSeed])
 
     if (!isVisible) return null
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
 
-            {/* Falling Seeds */}
-            {seeds.map(seed => (
-                <motion.div
-                    key={seed.id}
-                    initial={{ x: seed.x, y: seed.y, opacity: 0.9, scale: 1, rotate: seed.rotation }}
-                    animate={{
-                        x: seed.x + seed.drift,
-                        y: seed.y + 100,
-                        opacity: 0,
-                        scale: 0.4,
-                        rotate: seed.rotation + 180
-                    }}
-                    transition={{ duration: 1.0, ease: "easeOut" }}
-                    className="fixed w-1.5 h-2 bg-gray-900 rounded-full transform-gpu"
-                    style={{ translateX: '-50%', translateY: '-50%' }}
-                    onAnimationComplete={() => {
-                        setSeeds(prev => prev.filter(s => s.id !== seed.id))
-                    }}
-                />
-            ))}
+            {/* Seed container — managed via DOM, not React state */}
+            <div ref={seedContainerRef} />
+
             {/* Dragon Fruit Icon - GPU Accelerated */}
             <motion.div
                 className="fixed w-6 h-6 flex items-center justify-center transform-gpu"

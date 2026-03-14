@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -6,18 +6,20 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import BackToTop from './components/BackToTop'
-import Home from './pages/Home'
-import About from './pages/About'
-import Products from './pages/Products'
-import Gallery from './pages/Gallery'
-import Process from './pages/Process'
-import Contact from './pages/Contact'
-import FAQPage from './pages/FAQPage'
 import LoadingScreen from './components/LoadingScreen'
 import PageTransition from './components/PageTransition'
 import WhatsAppButton from './components/WhatsAppButton'
 import CustomCursor from './components/CustomCursor'
 import BottomNav from './components/BottomNav'
+
+// Lazy-loaded pages — each becomes its own JS chunk
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Products = lazy(() => import('./pages/Products'))
+const Gallery = lazy(() => import('./pages/Gallery'))
+const Process = lazy(() => import('./pages/Process'))
+const Contact = lazy(() => import('./pages/Contact'))
+const FAQPage = lazy(() => import('./pages/FAQPage'))
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -51,17 +53,19 @@ function App() {
       <BackToTop />
       <Navbar />
       <main className="flex-grow w-full max-w-[100vw] overflow-hidden pb-16 md:pb-0">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-            <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-            <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
-            <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
-            <Route path="/process" element={<PageTransition><Process /></PageTransition>} />
-            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-            <Route path="/faq" element={<PageTransition><FAQPage /></PageTransition>} />
-          </Routes>
-        </AnimatePresence>
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
+              <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
+              <Route path="/process" element={<PageTransition><Process /></PageTransition>} />
+              <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="/faq" element={<PageTransition><FAQPage /></PageTransition>} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
       </main>
       <WhatsAppButton />
       <BottomNav />

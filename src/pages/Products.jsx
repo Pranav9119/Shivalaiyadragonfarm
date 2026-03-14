@@ -36,21 +36,28 @@ export default function Products() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      const scrollY = window.scrollY
-      setShowSticky(scrollY > 400)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY
+          setShowSticky(scrollY > 400)
 
-      const freshSection = document.getElementById('fresh-harvest')
-      const valueSection = document.getElementById('value-added')
+          const freshSection = document.getElementById('fresh-harvest')
+          const valueSection = document.getElementById('value-added')
 
-      if (valueSection && scrollY >= valueSection.offsetTop - 200) {
-        setActiveSection('value-added')
-      } else if (freshSection) {
-        setActiveSection('fresh-harvest')
+          if (valueSection && scrollY >= valueSection.offsetTop - 200) {
+            setActiveSection('value-added')
+          } else if (freshSection) {
+            setActiveSection('fresh-harvest')
+          }
+          ticking = false
+        })
+        ticking = true
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

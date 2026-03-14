@@ -15,6 +15,51 @@
     "heroDesc": "Experience the finest organic dragon fruit, cultivated with sustainable practices and delivered with exceptional quality. Nature's exotic treasure.",
     "exploreProducts": "Explore Products",
     "ourStory": "Our Story",
+    "healthBenefits": {
+      "title": "Superfood Benefits",
+      "subtitle": "Why Dragon Fruit?",
+      "desc": "Nature's beautiful superfood packed with essential nutrients for your daily wellness.",
+      "antioxidants": "Rich in Antioxidants",
+      "antioxidantsDesc": "Helps fight free radicals and prevents cellular damage.",
+      "immunity": "Boosts Immunity",
+      "immunityDesc": "High Vitamin C content strengthens your natural defenses.",
+      "fiber": "Dietary Fiber",
+      "fiberDesc": "Promotes healthy digestion and gut microbiome.",
+      "heart": "Heart Health",
+      "heartDesc": "Improves cardiovascular health and reduces bad cholesterol."
+    },
+    "whyChooseUs": {
+      "title": "The Shivalaiya Difference",
+      "subtitle": "Farming with Purpose",
+      "desc": "We don’t just grow fruits; we cultivate an ecosystem. Here is why our dragon fruits are simply better.",
+      "organic": "100% Organic",
+      "organicDesc": "Zero chemical pesticides or synthetic fertilizers.",
+      "sustainable": "Sustainable",
+      "sustainableDesc": "Water-efficient irrigation and zero-waste farming.",
+      "handPicked": "Hand-Picked",
+      "handPickedDesc": "Harvested exactly at peak ripeness for maximum sweetness.",
+      "farmToHome": "Farm to Home",
+      "farmToHomeDesc": "Delivered directly from our orchards to your doorstep."
+    },
+    "recipe": {
+      "title": "A Taste of Paradise",
+      "subtitle": "How to Enjoy",
+      "recipeName": "Dragon Fruit Smoothie Bowl",
+      "step1": "1. Blend frozen dragon fruit (pink variety) with a splash of coconut water until thick and smooth.",
+      "step2": "2. Pour into your favorite bowl.",
+      "step3": "3. Top generously with granola, chia seeds, fresh berries, and a drizzle of honey.",
+      "enjoy": "Enjoy the perfect healthy breakfast!"
+    },
+    "videoTour": {
+      "title": "Experience the Farm",
+      "desc": "Take a breathtaking virtual tour of our 10-acre organic paradise nestled in the fertile lands of Coimbatore.",
+      "playText": "Watch Farm Tour"
+    },
+    "gallery": {
+      "title": "Farm Gallery",
+      "subtitle": "A Visual Journey",
+      "desc": "Glimpses of our daily life, from midnight blooming to the golden sunrise harvest."
+    },
     "ourSpecialties": "Our Specialties",
     "featuredVarieties": "Featured Varieties",
     "featuredDesc": "Discover our delicious dragon fruit varieties, each with unique flavor profiles and nutritional benefits.",

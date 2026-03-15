@@ -498,7 +498,7 @@ export default function Home() {
               <div className="relative aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl bg-black">
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/aGw6qSZbI9A"
+                  src="https://www.youtube.com/embed/lXTEmgxDc9s"
                   title="Shivalaiya Dragon Farm Tour"
                   loading="lazy"
                   allowFullScreen

@@ -63,42 +63,29 @@ export default function Home() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-dragon-green-dark"
       >
-        {/* Elite Dynamic Mesh Gradient Background — CSS animations */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div
-            className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-dragon-pink/15 rounded-full blur-[80px] transform-gpu"
-            style={{ animation: 'blobDrift1 25s linear infinite' }}
+        {/* Elite Cinematic Background — matching Video Tour style */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-dragon-green-dark" />
+          <img 
+            src="/varieties/mexican-red.webp" 
+            alt="Farm Sunrise" 
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover opacity-50"
+            width={1920}
+            height={1080}
+            style={{ animation: 'carouselScroll 60s ease-in-out infinite alternate' }}
           />
-          <div
-            className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-dragon-green-light/20 rounded-full blur-[80px] transform-gpu"
-            style={{ animation: 'blobDrift2 30s linear infinite' }}
-          />
-          <div
-            className="absolute top-[20%] right-[10%] w-[40%] h-[40%] bg-dragon-pink-light/10 rounded-full blur-[60px] transform-gpu"
-            style={{ animation: 'blobDrift3 35s linear infinite' }}
-          />
-          <div
-            className="absolute bottom-[20%] left-[20%] w-[45%] h-[45%] bg-cream/5 rounded-full blur-[70px] transform-gpu"
-            style={{ animation: 'blobDrift4 28s linear infinite' }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dragon-green-dark via-dragon-green-dark/40 to-dragon-green-dark" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(5,11,7,0.8)_100%)]" />
         </div>
 
-        {/* Overlay Gradients for Depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_transparent_0%,_rgba(15,45,26,0.5)_100%)] px-4" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30" />
-
-        {/* Floating decorative elements — static CSS animations, no parallax */}
-        <div
-          className="absolute top-20 left-10 w-20 h-20 bg-dragon-pink/20 rounded-full blur-2xl animate-float"
-        />
-        <div
-          className="absolute top-40 right-20 w-32 h-32 bg-cream/20 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: '1s' }}
-        />
-        <div
-          className="absolute bottom-40 left-1/4 w-24 h-24 bg-dragon-pink-light/20 rounded-full blur-2xl animate-float"
-          style={{ animationDelay: '2s' }}
-        />
+        {/* Floating decorative elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 left-10 w-20 h-20 bg-dragon-pink/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute top-40 right-20 w-32 h-32 bg-cream/10 rounded-full blur-[80px] animate-float" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-40 left-1/4 w-24 h-24 bg-dragon-pink-light/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-dragon-pink-light font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up">
@@ -498,28 +485,27 @@ export default function Home() {
               {t('home.videoTour.desc')}
             </p>
             
-            {/* Cinematic Play Button — opens YouTube farm tour */}
-            <a
-              href="https://youtu.be/aGw6qSZbI9A?si=iqfM4OwJUXI-0Vmc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative inline-flex items-center justify-center group cursor-pointer mt-4"
-              aria-label={t('home.videoTour.playText')}
-            >
-              {/* Expanding rings */}
-              <div className="absolute inset-0 border border-dragon-pink rounded-full opacity-0 group-hover:animate-ping duration-[3s]" />
-              <div className="absolute -inset-4 border border-white/30 rounded-full opacity-0 group-hover:animate-ping duration-[3s]" style={{ animationDelay: '0.5s' }} />
+            {/* Shivalaiya Dragon Farm Tour Title */}
+            <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-8 drop-shadow-lg">
+              Shivalaiya Dragon Farm Tour
+            </h3>
+            
+            {/* YouTube Video Embed Container */}
+            <div className="relative w-full max-w-4xl mx-auto group">
+              {/* Green Glow Layer */}
+              <div className="absolute -inset-4 bg-dragon-green/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-80 transition-opacity duration-700" />
               
-              {/* Massive Glow */}
-              <div 
-                className="absolute inset-0 bg-dragon-pink rounded-full blur-[40px] opacity-40 group-hover:opacity-80 transition-opacity duration-700"
-              />
-              
-              {/* Button Body */}
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/60 transition-all duration-500 group-hover:scale-110 shadow-2xl">
-                <div className="w-0 h-0 border-t-[18px] border-t-transparent border-l-[30px] border-l-white border-b-[18px] border-b-transparent ml-3 group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl bg-black">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/aGw6qSZbI9A"
+                  title="Shivalaiya Dragon Farm Tour"
+                  loading="lazy"
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
               </div>
-            </a>
+            </div>
           </ScrollReveal>
         </div>
       </section>

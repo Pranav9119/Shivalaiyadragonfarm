@@ -2,15 +2,15 @@ import { useTranslation } from 'react-i18next'
 import GalleryCard from '../components/GalleryCard'
 
 const galleryKeys = [
-  { titleKey: 'gallery.sunriseHarvest', descKey: 'gallery.sunriseHarvestDesc' },
-  { titleKey: 'gallery.bloomingFlowers', descKey: 'gallery.bloomingFlowersDesc' },
-  { titleKey: 'gallery.vineyardRows', descKey: 'gallery.vineyardRowsDesc' },
-  { titleKey: 'gallery.freshPicked', descKey: 'gallery.freshPickedDesc' },
-  { titleKey: 'gallery.farmSunset', descKey: 'gallery.farmSunsetDesc' },
-  { titleKey: 'gallery.organicCert', descKey: 'gallery.organicCertDesc' },
-  { titleKey: 'gallery.familyFarm', descKey: 'gallery.familyFarmDesc' },
-  { titleKey: 'gallery.marketReady', descKey: 'gallery.marketReadyDesc' },
-  { titleKey: 'gallery.tropicalParadise', descKey: 'gallery.tropicalParadiseDesc' },
+  { titleKey: 'gallery.sunriseHarvest', descKey: 'gallery.sunriseHarvestDesc', image: '/gallery/gallery 1.webp' },
+  { titleKey: 'gallery.bloomingFlowers', descKey: 'gallery.bloomingFlowersDesc', image: '/gallery/gallery 2.jpg' },
+  { titleKey: 'gallery.vineyardRows', descKey: 'gallery.vineyardRowsDesc', image: '/gallery/gallery 3.jpg' },
+  { titleKey: 'gallery.freshPicked', descKey: 'gallery.freshPickedDesc', image: '/gallery/gallery 4.jpg' },
+  { titleKey: 'gallery.farmSunset', descKey: 'gallery.farmSunsetDesc', image: '/gallery/gallery 5.jpg' },
+  { titleKey: 'gallery.organicCert', descKey: 'gallery.organicCertDesc', image: '/gallery/gallery 6.jpg' },
+  { titleKey: 'gallery.familyFarm', descKey: 'gallery.familyFarmDesc', image: '/gallery/gallery 7.jpg' },
+  { titleKey: 'gallery.marketReady', descKey: 'gallery.marketReadyDesc', image: '/gallery/gallery 8.jpg' },
+  { titleKey: 'gallery.tropicalParadise', descKey: 'gallery.tropicalParadiseDesc', image: '/gallery/gallery 9.jpg' },
 ]
 
 export default function Gallery() {
@@ -42,6 +42,7 @@ export default function Gallery() {
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <GalleryCard
+                  image={item.image}
                   title={t(item.titleKey)}
                   description={t(item.descKey)}
                 />

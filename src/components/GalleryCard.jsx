@@ -10,12 +10,12 @@ export default function GalleryCard({ image, title, description }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-dragon-green/30 to-dragon-pink/30 group-hover:scale-110 transition-transform duration-700" />
+      <div className="absolute inset-0 bg-gradient-to-br from-dragon-green/20 to-dragon-pink/20 group-hover:scale-105 transition-transform duration-700 ease-out" />
       {image && (
         <img
           src={image}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out will-change-transform"
           width={600}
           height={600}
           loading="lazy"

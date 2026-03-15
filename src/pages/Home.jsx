@@ -549,33 +549,35 @@ export default function Home() {
 
           <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 pb-20">
             {[
-              { src: "/varieties/american-beauty.jpg", aspect: "aspect-[3/4]" },
-              { src: "/varieties/c-variety.jpg", aspect: "aspect-square" },
-              { src: "/varieties/dragon-halva.jpg", aspect: "aspect-[4/5]" },
-              { src: "/varieties/Morocco-Red.webp", aspect: "aspect-[3/4]" },
-              { src: "/varieties/jumbo-red.jpg", aspect: "aspect-square" },
-              { src: "/varieties/malaysian-red.jpg", aspect: "aspect-[4/5]" },
-              { src: "/varieties/mexican-red.webp", aspect: "aspect-[3/4]" }
+              { src: "/gallery/gallery 1.webp", aspect: "aspect-[3/4]" },
+              { src: "/gallery/gallery 2.jpg", aspect: "aspect-square" },
+              { src: "/gallery/gallery 3.jpg", aspect: "aspect-[4/5]" },
+              { src: "/gallery/gallery 4.jpg", aspect: "aspect-[3/4]" },
+              { src: "/gallery/gallery 5.jpg", aspect: "aspect-square" },
+              { src: "/gallery/gallery 6.jpg", aspect: "aspect-[4/5]" },
+              { src: "/gallery/gallery 7.jpg", aspect: "aspect-[3/4]" },
+              { src: "/gallery/gallery 8.jpg", aspect: "aspect-square" },
+              { src: "/gallery/gallery 9.jpg", aspect: "aspect-[4/5]" }
             ].map((img, idx) => (
               <ScrollReveal key={idx} delay={(idx % 4) * 0.1}>
                 <div className={`relative ${img.aspect} rounded-3xl overflow-hidden group cursor-pointer break-inside-avoid border border-white/10 shadow-2xl`}>
-                  {/* Glass Shimmer Effect */}
-                  <div className="absolute inset-0 rotate-45 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent z-30" />
+                  {/* Glass Shimmer Effect - Optimized */}
+                  <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent z-30 pointer-events-none" />
                   
-                  <div className="absolute inset-0 bg-dragon-green-dark/60 group-hover:bg-transparent transition-colors duration-700 z-10" />
+                  <div className="absolute inset-0 bg-dragon-green-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   
                   <img 
                     src={img.src} 
                     alt={`Farm Gallery Image ${idx + 1}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale-[0.6] group-hover:grayscale-0"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 will-change-transform"
                     width={600}
                     height={400}
                   />
                   
                   {/* Elegant Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
                   
                   {/* Hover Icon */}
                   <div className="absolute bottom-6 right-6 z-30 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">

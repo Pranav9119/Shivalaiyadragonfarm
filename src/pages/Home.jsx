@@ -177,18 +177,23 @@ export default function Home() {
       </section>
 
       {/* Health Benefits Section */}
-      <section className="py-24 bg-cream relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-dragon-pink/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-dragon-green/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-24 bg-gradient-to-b from-cream via-cream/50 to-white relative overflow-hidden">
+        {/* Elite Animated Background Elements */}
+        <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-dragon-pink/5 rounded-full blur-[100px] pointer-events-none animate-float" />
+        <div className="absolute bottom-10 left-10 w-[600px] h-[600px] bg-dragon-green/5 rounded-full blur-[120px] pointer-events-none animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.8)_0%,_transparent_50%)] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-dragon-pink font-medium tracking-widest uppercase text-sm mb-2">{t('home.healthBenefits.subtitle')}</p>
-              <h2 className="font-serif text-4xl sm:text-5xl font-bold text-dragon-green mb-4">
+            <div className="text-center mb-16 relative">
+              <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-dragon-pink/5 border border-dragon-pink/10 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse mr-2" />
+                <p className="text-dragon-pink font-semibold tracking-widest uppercase text-xs">{t('home.healthBenefits.subtitle')}</p>
+              </div>
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-dragon-green mb-6">
                 {t('home.healthBenefits.title')}
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
                 {t('home.healthBenefits.desc')}
               </p>
             </div>
@@ -196,18 +201,28 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 cursor-default">
             {[
-              { id: 'antioxidants', icon: '✨', title: t('home.healthBenefits.antioxidants'), desc: t('home.healthBenefits.antioxidantsDesc'), color: 'dragon-pink' },
-              { id: 'immunity', icon: '🛡️', title: t('home.healthBenefits.immunity'), desc: t('home.healthBenefits.immunityDesc'), color: 'dragon-green' },
-              { id: 'fiber', icon: '🌿', title: t('home.healthBenefits.fiber'), desc: t('home.healthBenefits.fiberDesc'), color: 'dragon-pink' },
-              { id: 'heart', icon: '❤️', title: t('home.healthBenefits.heart'), desc: t('home.healthBenefits.heartDesc'), color: 'dragon-green' }
+              { id: 'antioxidants', icon: '✨', title: t('home.healthBenefits.antioxidants'), desc: t('home.healthBenefits.antioxidantsDesc'), color: 'dragon-pink', gradient: 'from-dragon-pink/20 to-transparent' },
+              { id: 'immunity', icon: '🛡️', title: t('home.healthBenefits.immunity'), desc: t('home.healthBenefits.immunityDesc'), color: 'dragon-green', gradient: 'from-dragon-green/20 to-transparent' },
+              { id: 'fiber', icon: '🌿', title: t('home.healthBenefits.fiber'), desc: t('home.healthBenefits.fiberDesc'), color: 'dragon-pink', gradient: 'from-dragon-pink/20 to-transparent' },
+              { id: 'heart', icon: '❤️', title: t('home.healthBenefits.heart'), desc: t('home.healthBenefits.heartDesc'), color: 'dragon-green', gradient: 'from-dragon-green/20 to-transparent' }
             ].map((benefit, index) => (
               <ScrollReveal key={benefit.id} delay={index * 0.1}>
-                <div className={`p-8 rounded-3xl bg-white border border-cream-dark/50 hover:border-${benefit.color}/30 shadow-xl hover:shadow-glow-lg transition-all duration-500 hover:-translate-y-2 group h-full flex flex-col`}>
-                  <div className={`w-14 h-14 rounded-2xl bg-${benefit.color}/10 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    {benefit.icon}
+                <div className="relative group h-full">
+                  <div className={`absolute -inset-0.5 bg-gradient-to-br ${benefit.gradient} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
+                  <div className={`relative p-8 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white hover:border-${benefit.color}/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-hidden`}>
+                    {/* Decorative Top Gradient */}
+                    <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    <div className="relative">
+                      <div className={`absolute inset-0 bg-${benefit.color}/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                      <div className={`relative w-16 h-16 rounded-2xl bg-white border border-cream-dark shadow-sm flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 z-10`}>
+                        {benefit.icon}
+                      </div>
+                    </div>
+                    
+                    <h3 className="font-serif text-2xl font-bold text-dragon-green mb-4 group-hover:text-dragon-pink transition-colors relative z-10">{benefit.title}</h3>
+                    <p className="text-gray-600 text-base leading-relaxed flex-grow relative z-10">{benefit.desc}</p>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-dragon-green mb-3 group-hover:text-dragon-pink transition-colors">{benefit.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed flex-grow">{benefit.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -217,47 +232,72 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="flex-1">
+        {/* Subtle mesh pattern overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230f2d1a\' fill-opacity=\'0.02\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50 z-0" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            <div className="flex-1 w-full relative">
               <ScrollReveal>
-                <div className="relative aspect-square sm:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl group border border-cream-dark">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-dragon-green/40 to-transparent z-10 opacity-60 group-hover:opacity-30 transition-opacity duration-700" />
+                {/* Image Glow Backdrop */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-dragon-green/30 to-dragon-pink/30 rounded-[3rem] blur-2xl opacity-50 animate-pulse-glow" />
+                
+                <div className="relative aspect-square sm:aspect-[4/4] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl group border-[8px] border-white z-10">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-dragon-green-dark/60 via-transparent to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
                   <img 
                     src="/varieties/malaysian-red.jpg" 
                     alt="Sustainable Farming" 
                     loading="lazy" 
                     decoding="async" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out" 
                   />
-                  <div className="absolute bottom-8 left-8 right-8 z-20 p-6 glass-dark rounded-2xl border border-white/10 hidden sm:block delay-100">
-                    <p className="text-white font-bold text-lg mb-1">{t('home.brand')}</p>
-                    <p className="text-white/80 text-sm">{t('home.whyChooseUs.desc')}</p>
+                  {/* Floating Badge */}
+                  <div className="absolute top-8 right-8 z-20 w-24 h-24 bg-white/90 backdrop-blur-md rounded-full shadow-xl flex items-center justify-center animate-float border border-white">
+                    <div className="text-center">
+                      <span className="block text-xl font-bold text-dragon-green leading-none">100%</span>
+                      <span className="block text-[10px] uppercase tracking-wider text-dragon-pink font-semibold mt-1">{t('home.whyChooseUs.organic')}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute bottom-8 left-8 right-8 z-20 p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/30 transform group-hover:translate-y-[-10px] transition-transform duration-500 shadow-xl hidden sm:block">
+                    <p className="text-white font-bold text-xl mb-2 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse" />
+                      {t('home.brand')}
+                    </p>
+                    <p className="text-white/90 text-sm leading-relaxed">{t('home.whyChooseUs.desc')}</p>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
+            
             <div className="flex-1">
               <ScrollReveal>
-                <p className="text-dragon-pink font-medium tracking-widest uppercase text-sm mb-2">{t('home.whyChooseUs.subtitle')}</p>
-                <h2 className="font-serif text-4xl sm:text-5xl font-bold text-dragon-green mb-8">
+                <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-dragon-green/5 border border-dragon-green/10 backdrop-blur-sm">
+                  <p className="text-dragon-green font-semibold tracking-widest uppercase text-xs">{t('home.whyChooseUs.subtitle')}</p>
+                </div>
+                <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-dragon-green mb-10 leading-tight">
                   {t('home.whyChooseUs.title')}
                 </h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="space-y-6">
                   {[
                     { id: 'organic', icon: '🌱', title: t('home.whyChooseUs.organic'), desc: t('home.whyChooseUs.organicDesc') },
                     { id: 'sustainable', icon: '💧', title: t('home.whyChooseUs.sustainable'), desc: t('home.whyChooseUs.sustainableDesc') },
                     { id: 'handPicked', icon: '👩‍🌾', title: t('home.whyChooseUs.handPicked'), desc: t('home.whyChooseUs.handPickedDesc') },
                     { id: 'farmToHome', icon: '🚚', title: t('home.whyChooseUs.farmToHome'), desc: t('home.whyChooseUs.farmToHomeDesc') }
                   ].map((usp, index) => (
-                    <div key={usp.id} className="flex gap-4 group">
-                      <div className="w-12 h-12 rounded-full bg-cream flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-dragon-pink/10 transition-colors">
-                        {usp.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-serif text-lg font-bold text-dragon-green mb-1 group-hover:text-dragon-pink transition-colors">{usp.title}</h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">{usp.desc}</p>
+                    <div key={usp.id} className="relative p-6 rounded-2xl bg-white border border-cream-dark/50 hover:border-dragon-pink/30 hover:shadow-xl transition-all duration-500 group overflow-hidden">
+                      {/* Hover Gradient Sweep */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-dragon-pink/5 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-0 transition-all duration-700" />
+                      
+                      <div className="relative flex gap-6 items-start z-10">
+                        <div className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-dragon-pink group-hover:text-white transition-colors duration-500 shadow-sm">
+                          {usp.icon}
+                        </div>
+                        <div>
+                          <h4 className="font-serif text-xl font-bold text-dragon-green mb-2 group-hover:text-dragon-pink transition-colors">{usp.title}</h4>
+                          <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{usp.desc}</p>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -326,143 +366,242 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-      {/* Featured Recipe Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-cream/30 z-0 hidden lg:block" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="flex-1 order-2 lg:order-1">
+         {/* Featured Recipe / How to Enjoy Section */}
+      <section className="py-32 relative overflow-hidden bg-dragon-green-dark">
+        {/* Immersive Background */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/varieties/dragon-jam.jpg" 
+            alt="How to Enjoy" 
+            loading="lazy" 
+            decoding="async" 
+            className="w-full h-full object-cover opacity-30" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dragon-green-dark via-dragon-green-dark/80 to-transparent z-10" />
+          {/* Animated Glow Blobs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-dragon-pink/20 rounded-full blur-[100px] animate-pulse-glow z-10" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-dragon-green-light/20 rounded-full blur-[120px] animate-float z-10" style={{ animationDelay: '2s' }} />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            {/* Left Content Area */}
+            <div className="flex-1 lg:max-w-xl">
               <ScrollReveal>
-                <div className="relative aspect-square sm:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl group border border-cream-dark">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-dragon-pink/30 to-transparent z-10 opacity-40 group-hover:opacity-20 transition-opacity duration-700" />
-                  <img 
-                    src="/varieties/dragon-jam.jpg" 
-                    alt="Dragon Fruit Bowl" 
-                    loading="lazy" 
-                    decoding="async" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-                  />
-                  {/* Decorative Elements */}
-                  <div className="absolute top-8 right-8 w-24 h-24 bg-white/20 backdrop-blur-md rounded-full border border-white/40 flex items-center justify-center z-20 animate-float shadow-glow">
-                    <span className="text-3xl">🥣</span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-dragon-pink/30 bg-dragon-pink/10 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse" />
+                  <p className="text-dragon-pink-light font-bold tracking-widest uppercase text-xs">{t('home.recipe.subtitle')}</p>
+                </div>
+                
+                <h2 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                  {t('home.recipe.title')}
+                </h2>
+                
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden group hover:border-dragon-pink/30 transition-colors duration-500">
+                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-dragon-pink to-dragon-green-light" />
+                  <h3 className="font-serif text-3xl font-bold text-dragon-pink-light mb-8">
+                    {t('home.recipe.recipeName')}
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    {['step1', 'step2', 'step3'].map((step, idx) => (
+                      <div key={step} className="flex gap-6 group/step">
+                        <div className="text-2xl font-serif font-bold text-white/20 group-hover/step:text-dragon-pink transition-colors duration-300 min-w-[2rem] pt-1">
+                          0{idx + 1}
+                        </div>
+                        <p className="text-cream-dark/80 leading-relaxed text-lg group-hover/step:text-white transition-colors duration-300">
+                          {t(`home.recipe.${step}`)}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </ScrollReveal>
             </div>
-            
-            <div className="flex-1 order-1 lg:order-2">
+
+            {/* Right Visual Area - Interactive Bento/Card */}
+            <div className="flex-1 w-full lg:w-auto relative hidden lg:block">
               <ScrollReveal delay={0.2}>
-                <p className="text-dragon-pink font-medium tracking-widest uppercase text-sm mb-2">{t('home.recipe.subtitle')}</p>
-                <h2 className="font-serif text-4xl sm:text-5xl font-bold text-dragon-green mb-8">
-                  {t('home.recipe.title')}
-                </h2>
-                
-                <div className="bg-cream/40 rounded-3xl p-8 sm:p-10 border border-cream-dark/50 shadow-sm mb-8">
-                  <h3 className="font-serif text-2xl font-bold text-dragon-green mb-6 border-b border-dragon-pink/20 pb-4">
-                    {t('home.recipe.recipeName')}
-                  </h3>
-                  <ul className="space-y-6">
-                    {['step1', 'step2', 'step3'].map((step, idx) => (
-                      <li key={step} className="flex gap-4">
-                        <span className="text-dragon-pink font-bold text-lg">{idx + 1}.</span>
-                        <p className="text-gray-700 leading-relaxed">{t(`home.recipe.${step}`)}</p>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 pt-6 border-t border-dragon-pink/20">
-                    <p className="text-dragon-green-dark font-semibold italic text-lg text-center">
-                      ✨ {t('home.recipe.enjoy')} ✨
+                <div className="relative aspect-square max-w-lg mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-700">
+                  {/* Outer Glass Frame */}
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-[3rem] border-2 border-white/20 shadow-2xl" />
+                  
+                  {/* Inner Image Grid Layer */}
+                  <div className="absolute inset-4 rounded-[2.5rem] overflow-hidden border border-white/10">
+                    <img 
+                      src="/varieties/dragon-jam.jpg" 
+                      alt="Dragon Fruit Bowl" 
+                      loading="lazy" 
+                      decoding="async" 
+                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-[2s] ease-out" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-dragon-pink/20 to-transparent opacity-60 mix-blend-overlay" />
+                  </div>
+                  
+                  {/* Floating Enjoy Badge */}
+                  <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-dragon-green/90 backdrop-blur-md rounded-full border border-white/20 shadow-2xl flex items-center justify-center animate-float">
+                    <p className="text-center">
+                      <span className="block text-3xl mb-1">✨</span>
+                      <span className="block font-serif italic text-dragon-pink-light font-bold">Enjoy!</span>
                     </p>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
+            
+            {/* Mobile Visual */}
+            <div className="lg:hidden w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-2 border-white/10 relative">
+              <img 
+                src="/varieties/dragon-jam.jpg" 
+                alt="Dragon Fruit Bowl" 
+                loading="lazy" 
+                decoding="async" 
+                className="w-full h-full object-cover" 
+              />
+            </div>
           </div>
         </div>
       </section>
-
       {/* Video Tour Teaser */}
-      <section className="py-32 relative flex items-center justify-center overflow-hidden min-h-[70vh]">
+      <section className="py-32 relative flex items-center justify-center overflow-hidden min-h-[80vh]">
         <div className="absolute inset-0 z-0">
+          {/* Animated Zooming Background */}
+          <div className="absolute inset-0 bg-dragon-green-dark" />
           <img 
             src="/varieties/mexican-red.webp" 
             alt="Farm Sunrise" 
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover opacity-60"
+            style={{ animation: 'carouselScroll 60s ease-in-out infinite alternate' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-dragon-green-dark/80 via-black/40 to-dragon-green-dark/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050b07] via-dragon-green-dark/60 to-[#050b07]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050b07_100%)] opacity-80" />
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <ScrollReveal>
-            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/20 bg-black/30 backdrop-blur-md mb-8">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-dragon-pink opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-dragon-pink"></span>
+              </span>
+              <span className="text-white font-medium text-sm tracking-widest uppercase">{t('home.videoTour.playText')}</span>
+            </div>
+            
+            <h2 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
               {t('home.videoTour.title')}
             </h2>
-            <p className="text-xl sm:text-2xl text-cream/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-xl sm:text-2xl text-cream/80 mb-16 max-w-3xl mx-auto leading-relaxed font-light">
               {t('home.videoTour.desc')}
             </p>
             
-            {/* Elegant Play Button */}
-            <div className="relative inline-flex items-center justify-center group cursor-pointer">
+            {/* Cinematic Play Button */}
+            <div className="relative inline-flex items-center justify-center group cursor-pointer mt-4">
+              {/* Expanding rings */}
+              <div className="absolute inset-0 border border-dragon-pink rounded-full opacity-0 group-hover:animate-ping duration-[3s]" />
+              <div className="absolute -inset-4 border border-white/30 rounded-full opacity-0 group-hover:animate-ping duration-[3s]" style={{ animationDelay: '0.5s' }} />
+              
+              {/* Massive Glow */}
               <div 
-                className="absolute inset-0 bg-dragon-pink rounded-full blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ animation: 'whatsappPulse 2.5s infinite' }}
+                className="absolute inset-0 bg-dragon-pink rounded-full blur-[40px] opacity-40 group-hover:opacity-80 transition-opacity duration-700"
               />
-              <div className="relative w-24 h-24 bg-white/10 backdrop-blur-md border-2 border-white/50 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors duration-300 group-hover:scale-105 transform">
-                <div className="w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-white border-b-[15px] border-b-transparent ml-2" />
+              
+              {/* Button Body */}
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/60 transition-all duration-500 group-hover:scale-110 shadow-2xl">
+                <div className="w-0 h-0 border-t-[18px] border-t-transparent border-l-[30px] border-l-white border-b-[18px] border-b-transparent ml-3 group-hover:scale-110 transition-transform duration-500" />
               </div>
             </div>
-            <p className="mt-6 text-dragon-pink-light tracking-widest uppercase text-sm font-semibold opacity-80">
-              {t('home.videoTour.playText')}
-            </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Farm Gallery (Masonry Grid) */}
-      <section className="py-24 bg-dragon-green-dark relative overflow-hidden">
-        <BackgroundParticles count={15} color="bg-dragon-pink" />
+      <section className="py-32 bg-[#050b07] relative overflow-hidden">
+        {/* Elite Ambient Glow */}
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-dragon-green/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-dragon-pink/10 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <ScrollReveal>
-              <p className="text-dragon-pink font-medium tracking-widest uppercase text-sm mb-2">{t('home.gallery.subtitle')}</p>
-              <h2 className="font-serif text-4xl sm:text-5xl font-bold text-white mb-4 drop-shadow-md">
-                {t('home.gallery.title')}
-              </h2>
-              <p className="text-cream-dark/80 max-w-2xl mx-auto text-lg drop-shadow">
-                {t('home.gallery.desc')}
-              </p>
+        <BackgroundParticles count={20} color="bg-dragon-pink" />
+        
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl text-left">
+              <ScrollReveal>
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-dragon-pink/30 rounded-full bg-dragon-pink/5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-dragon-pink" />
+                  <p className="text-dragon-pink-light font-medium tracking-widest uppercase text-xs">{t('home.gallery.subtitle')}</p>
+                </div>
+                <h2 className="font-serif text-5xl sm:text-6xl font-bold text-white mb-6">
+                  {t('home.gallery.title')}
+                </h2>
+                <p className="text-cream-dark/70 text-lg sm:text-xl font-light leading-relaxed">
+                  {t('home.gallery.desc')}
+                </p>
+              </ScrollReveal>
+            </div>
+            
+            <ScrollReveal delay={0.2}>
+              <Link to="/gallery" className="group hidden md:inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-medium rounded-full border border-white/10 transition-all duration-300 hover:border-dragon-pink/50">
+                View Full Gallery
+                <span className="w-8 h-8 rounded-full bg-dragon-pink flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </Link>
             </ScrollReveal>
           </div>
 
-          <div className="columns-2 md:columns-3 xl:columns-4 gap-4 sm:gap-6 space-y-4 sm:space-y-6 pb-28">
+          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 pb-20">
             {[
-              "/varieties/american-beauty.jpg",
-              "/varieties/c-variety.jpg",
-              "/varieties/dragon-halva.jpg",
-              "/varieties/Morocco-Red.webp",
-              "/varieties/jumbo-red.jpg",
-              "/varieties/malaysian-red.jpg",
-              "/varieties/mexican-red.webp"
-            ].map((imgSrc, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.1}>
-                <div className="relative rounded-2xl sm:rounded-[2rem] overflow-hidden group cursor-pointer break-inside-avoid shadow-xl border border-white/10">
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-500 z-10" />
+              { src: "/varieties/american-beauty.jpg", aspect: "aspect-[3/4]" },
+              { src: "/varieties/c-variety.jpg", aspect: "aspect-square" },
+              { src: "/varieties/dragon-halva.jpg", aspect: "aspect-[4/5]" },
+              { src: "/varieties/Morocco-Red.webp", aspect: "aspect-[3/4]" },
+              { src: "/varieties/jumbo-red.jpg", aspect: "aspect-square" },
+              { src: "/varieties/malaysian-red.jpg", aspect: "aspect-[4/5]" },
+              { src: "/varieties/mexican-red.webp", aspect: "aspect-[3/4]" }
+            ].map((img, idx) => (
+              <ScrollReveal key={idx} delay={(idx % 4) * 0.1}>
+                <div className={`relative ${img.aspect} rounded-3xl overflow-hidden group cursor-pointer break-inside-avoid border border-white/10 shadow-2xl`}>
+                  {/* Glass Shimmer Effect */}
+                  <div className="absolute inset-0 rotate-45 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent z-30" />
+                  
+                  <div className="absolute inset-0 bg-dragon-green-dark/60 group-hover:bg-transparent transition-colors duration-700 z-10" />
+                  
                   <img 
-                    src={imgSrc} 
+                    src={img.src} 
                     alt={`Farm Gallery Image ${idx + 1}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale-[0.4] group-hover:grayscale-0"
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale-[0.6] group-hover:grayscale-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dragon-pink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 mix-blend-overlay" />
+                  
+                  {/* Elegant Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                  
+                  {/* Hover Icon */}
+                  <div className="absolute bottom-6 right-6 z-30 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
+          
+          {/* Mobile View All Button */}
+          <div className="text-center md:hidden mt-8 relative z-30">
+            <Link to="/gallery" className="inline-flex items-center gap-2 px-8 py-4 bg-dragon-pink text-white font-medium rounded-full shadow-glow">
+              View Full Gallery
+            </Link>
+          </div>
 
+          {/* Fade out bottom */}
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#050b07] to-transparent z-20 pointer-events-none" />
         </div>
       </section>

@@ -43,6 +43,10 @@ export default function ProductModal({ isOpen, onClose, product }) {
                                     src={product.image}
                                     alt={t(product.titleKey)}
                                     className="w-full h-full object-cover"
+                                    width={800}
+                                    height={600}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent`} />
                             </div>

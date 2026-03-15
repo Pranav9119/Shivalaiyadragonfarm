@@ -131,6 +131,10 @@ export default function Products() {
               src={transitionState.product.image}
               className="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
               alt=""
+              width={1920}
+              height={1080}
+              loading="lazy"
+              decoding="async"
             />
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-dragon-green via-dragon-green/50 to-transparent z-10" />

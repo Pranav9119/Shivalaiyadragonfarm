@@ -82,6 +82,10 @@ export default function Navbar() {
                 alt="Shivalaiya Dragon Farm Logo"
                 className={`w-auto object-contain transition-all duration-700 ease-in-out ${isScrolled ? 'h-8 sm:h-9' : 'h-10 sm:h-12'
                   }`}
+                width={48}
+                height={48}
+                loading="lazy"
+                decoding="async"
               />
               <motion.div
                 className="absolute inset-0 bg-dragon-pink/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"

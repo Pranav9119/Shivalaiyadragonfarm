@@ -37,6 +37,10 @@ export default function ProductCard({ titleKey, title, description, image, varia
               src={image}
               alt={displayTitle}
               className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${imageStyle}`}
+              width={400}
+              height={400}
+              loading="lazy"
+              decoding="async"
             />
           ) : (
             <span className="text-8xl opacity-50 group-hover:scale-110 transition-transform duration-700">🐉</span>

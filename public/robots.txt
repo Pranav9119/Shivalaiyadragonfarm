@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shivalaiyadragonfarm.vercel.app/sitemap.xml

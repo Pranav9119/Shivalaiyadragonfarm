@@ -36,6 +36,10 @@ export default function PageLoader() {
                             src="/logo.png"
                             alt="Logo"
                             className="w-12 h-12 object-contain animate-pulse"
+                            width={48}
+                            height={48}
+                            loading="lazy"
+                            decoding="async"
                         />
                     </div>
                 </div>

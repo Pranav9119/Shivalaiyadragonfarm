@@ -16,6 +16,10 @@ export default function GalleryCard({ image, title, description }) {
           src={image}
           alt={title}
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          width={600}
+          height={600}
+          loading="lazy"
+          decoding="async"
         />
       )}
       <div

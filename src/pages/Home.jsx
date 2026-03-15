@@ -29,6 +29,8 @@ const CarouselCard = memo(({ product, t }) => (
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         alt={t(product.titleKey)}
+        width={400}
+        height={500}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-dragon-green via-dragon-green/20 to-transparent p-6 sm:p-8 flex flex-col justify-end z-10">
         <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
@@ -126,16 +128,6 @@ export default function Home() {
             >
               {t('home.ourStory')}
             </Link>
-          </div>
-        </div>
-
-        {/* Scroll Indicator — CSS animation */}
-        <div className="absolute bottom-24 sm:bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 text-white/60 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
-            <div
-              className="w-1.5 h-1.5 bg-dragon-pink rounded-full"
-              style={{ animation: 'scrollBounce 2s ease-in-out infinite' }}
-            />
           </div>
         </div>
       </section>
@@ -250,6 +242,8 @@ export default function Home() {
                     loading="lazy" 
                     decoding="async" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s] ease-out" 
+                    width={800}
+                    height={600}
                   />
                   {/* Floating Badge */}
                   <div className="absolute top-8 right-8 z-20 w-24 h-24 bg-white/90 backdrop-blur-md rounded-full shadow-xl flex items-center justify-center animate-float border border-white">
@@ -376,6 +370,8 @@ export default function Home() {
             loading="lazy" 
             decoding="async" 
             className="w-full h-full object-cover opacity-30" 
+            width={1920}
+            height={1080}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-dragon-green-dark via-dragon-green-dark/80 to-transparent z-10" />
           {/* Animated Glow Blobs */}
@@ -434,6 +430,8 @@ export default function Home() {
                       loading="lazy" 
                       decoding="async" 
                       className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-[2s] ease-out" 
+                      width={800}
+                      height={600}
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-dragon-pink/20 to-transparent opacity-60 mix-blend-overlay" />
                   </div>
@@ -457,6 +455,8 @@ export default function Home() {
                 loading="lazy" 
                 decoding="async" 
                 className="w-full h-full object-cover" 
+                width={600}
+                height={600}
               />
             </div>
           </div>
@@ -473,6 +473,8 @@ export default function Home() {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover opacity-60"
+            width={1920}
+            height={1080}
             style={{ animation: 'carouselScroll 60s ease-in-out infinite alternate' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050b07] via-dragon-green-dark/60 to-[#050b07]" />
@@ -496,8 +498,14 @@ export default function Home() {
               {t('home.videoTour.desc')}
             </p>
             
-            {/* Cinematic Play Button */}
-            <div className="relative inline-flex items-center justify-center group cursor-pointer mt-4">
+            {/* Cinematic Play Button — opens YouTube farm tour */}
+            <a
+              href="https://youtu.be/aGw6qSZbI9A?si=iqfM4OwJUXI-0Vmc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative inline-flex items-center justify-center group cursor-pointer mt-4"
+              aria-label={t('home.videoTour.playText')}
+            >
               {/* Expanding rings */}
               <div className="absolute inset-0 border border-dragon-pink rounded-full opacity-0 group-hover:animate-ping duration-[3s]" />
               <div className="absolute -inset-4 border border-white/30 rounded-full opacity-0 group-hover:animate-ping duration-[3s]" style={{ animationDelay: '0.5s' }} />
@@ -511,7 +519,7 @@ export default function Home() {
               <div className="relative w-28 h-28 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/60 transition-all duration-500 group-hover:scale-110 shadow-2xl">
                 <div className="w-0 h-0 border-t-[18px] border-t-transparent border-l-[30px] border-l-white border-b-[18px] border-b-transparent ml-3 group-hover:scale-110 transition-transform duration-500" />
               </div>
-            </div>
+            </a>
           </ScrollReveal>
         </div>
       </section>
@@ -576,6 +584,8 @@ export default function Home() {
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 grayscale-[0.6] group-hover:grayscale-0"
+                    width={600}
+                    height={400}
                   />
                   
                   {/* Elegant Gradient Overlay */}
@@ -662,6 +672,8 @@ export default function Home() {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover grayscale-[0.3] brightness-75 group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
+                      width={600}
+                      height={750}
                     />
 
                     {/* Floating Info Overlay */}

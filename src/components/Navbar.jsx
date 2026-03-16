@@ -55,8 +55,8 @@ export default function Navbar() {
       {/* Background Pill Container */}
       <div className={`absolute inset-0 overflow-hidden transition-all duration-700 ease-in-out -z-10 ${isOpen ? 'rounded-[2rem]' : 'rounded-full'
         } ${isScrolled || isOpen
-          ? 'bg-white/80 backdrop-blur-2xl shadow-2xl border border-dragon-pink/20'
-          : 'bg-white/70 backdrop-blur-xl shadow-xl border border-cream-dark/40'
+          ? 'bg-white/80 backdrop-blur-md shadow-2xl border border-dragon-pink/20'
+          : 'bg-white/70 backdrop-blur-sm shadow-xl border border-cream-dark/40'
         }`}>
         {/* Scroll Progress Bar */}
         <motion.div
@@ -185,7 +185,7 @@ export default function Navbar() {
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               className="xl:hidden absolute top-full left-0 right-0 mx-3 mt-2 z-50 rounded-2xl overflow-hidden shadow-2xl border border-cream-dark/60"
-              style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', background: 'rgba(255,255,255,0.95)' }}
+              style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.95)' }}
             >
               {/* Subtle gradient accent top bar */}
               <div className="h-0.5 bg-gradient-to-r from-dragon-green via-dragon-pink to-dragon-green-light" />

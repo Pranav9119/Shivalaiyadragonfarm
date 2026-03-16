@@ -92,7 +92,7 @@
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-10px) translateZ(0);
   }
 }
 
@@ -132,15 +132,15 @@
 
 @keyframes slideOverlay {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-100%) translateZ(0);
   }
 
   50% {
-    transform: translateX(0);
+    transform: translateX(0) translateZ(0);
   }
 
   100% {
-    transform: translateX(100%);
+    transform: translateX(100%) translateZ(0);
   }
 }
 
@@ -148,12 +148,12 @@
 
   0%,
   100% {
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
     opacity: 1;
   }
 
   50% {
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
     opacity: 0.8;
   }
 }
@@ -395,15 +395,15 @@ body {
 @keyframes seedFall {
   0% {
     opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1) rotate(var(--seed-rotate, 0deg));
+    transform: translate(-50%, -50%) scale(1) rotate(var(--seed-rotate, 0deg)) translateZ(0);
   }
   100% {
     opacity: 0;
-    transform: translate(calc(-50% + var(--seed-drift, 0px)), calc(-50% + 100px)) scale(0.4) rotate(calc(var(--seed-rotate, 0deg) + 180deg));
+    transform: translate(calc(-50% + var(--seed-drift, 0px)), calc(-50% + 100px)) scale(0.4) rotate(calc(var(--seed-rotate, 0deg) + 180deg)) translateZ(0);
   }
 }
 
-/* CSS Carousel Scroll (replaces framer-motion x animation) */
+/* CSS Carousel Scroll - Optimized for large desktop screens */
 @keyframes carouselScroll {
   0% {
     transform: translateX(0) translateZ(0);
@@ -411,6 +411,29 @@ body {
   100% {
     transform: translateX(-50%) translateZ(0);
   }
+}
+
+/* Efficient Breadth Zoom animation (better than large translations) */
+@keyframes breathZoom {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+  }
+  50% {
+    transform: scale(1.05) translateZ(0);
+  }
+}
+
+/* Rendering Isolation Utilities */
+.contain-paint {
+  contain: paint;
+}
+
+.contain-layout {
+  contain: layout;
+}
+
+.contain-content {
+  contain: content;
 }
 
 /* Scroll indicator bounce */

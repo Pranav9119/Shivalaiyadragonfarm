@@ -61,7 +61,7 @@ export default function Home() {
     <div>
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-dragon-green-dark"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-dragon-green-dark contain-paint"
       >
         {/* Elite Cinematic Background — matching Video Tour style */}
         <div className="absolute inset-0 z-0">
@@ -71,10 +71,10 @@ export default function Home() {
             alt="Farm Sunrise" 
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-50 will-change-transform"
             width={1920}
             height={1080}
-            style={{ animation: 'carouselScroll 60s ease-in-out infinite alternate' }}
+            style={{ animation: 'breathZoom 20s ease-in-out infinite alternate' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dragon-green-dark via-dragon-green-dark/40 to-dragon-green-dark" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(5,11,7,0.8)_100%)]" />
@@ -120,9 +120,9 @@ export default function Home() {
       </section>
 
       {/* Glassmorphic Stats Row */}
-      <section className="relative -mt-16 z-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative -mt-16 z-20 px-4 sm:px-6 lg:px-8 contain-paint">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-[2.5rem] p-8 sm:p-12 shadow-2xl overflow-hidden relative group bg-gradient-to-r from-white/85 via-cream/80 to-white/85 backdrop-blur-xl border border-cream-dark/70">
+          <div className="rounded-[2.5rem] p-8 sm:p-12 shadow-2xl overflow-hidden relative group bg-gradient-to-r from-white/85 via-cream/80 to-white/85 backdrop-blur-md border border-cream-dark/70">
             {/* Background decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-dragon-pink/8 rounded-full blur-3xl -mr-32 -mt-32 transition-colors group-hover:bg-dragon-pink/12" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-dragon-green/8 rounded-full blur-3xl -ml-32 -mb-32 transition-colors group-hover:bg-dragon-green/12" />
@@ -156,7 +156,7 @@ export default function Home() {
       </section>
 
       {/* Health Benefits Section */}
-      <section className="py-24 bg-gradient-to-b from-cream via-cream/50 to-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-cream via-cream/50 to-white relative overflow-hidden contain-paint">
         {/* Elite Animated Background Elements */}
         <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-dragon-pink/5 rounded-full blur-[100px] pointer-events-none animate-float" />
         <div className="absolute bottom-10 left-10 w-[600px] h-[600px] bg-dragon-green/5 rounded-full blur-[120px] pointer-events-none animate-float" style={{ animationDelay: '2s' }} />
@@ -188,7 +188,7 @@ export default function Home() {
               <ScrollReveal key={benefit.id} delay={index * 0.1}>
                 <div className="relative group h-full">
                   <div className={`absolute -inset-0.5 bg-gradient-to-br ${benefit.gradient} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
-                  <div className={`relative p-8 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white hover:border-${benefit.color}/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-hidden`}>
+                  <div className={`relative p-8 rounded-[2rem] bg-white/60 backdrop-blur-md border border-white hover:border-${benefit.color}/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-hidden`}>
                     {/* Decorative Top Gradient */}
                     <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                     
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden contain-paint">
         {/* Subtle mesh pattern overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230f2d1a\' fill-opacity=\'0.02\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50 z-0" />
         
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-cream to-white overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-cream to-white overflow-hidden contain-paint">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <ScrollReveal>
             <div className="text-center">
@@ -348,7 +348,7 @@ export default function Home() {
       </section>
 
          {/* Featured Recipe / How to Enjoy Section */}
-      <section className="py-32 relative overflow-hidden bg-dragon-green-dark">
+      <section className="py-32 relative overflow-hidden bg-dragon-green-dark contain-paint">
         {/* Immersive Background */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -380,7 +380,7 @@ export default function Home() {
                   {t('home.recipe.title')}
                 </h2>
                 
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden group hover:border-dragon-pink/30 transition-colors duration-500">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden group hover:border-dragon-pink/30 transition-colors duration-500">
                   <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-dragon-pink to-dragon-green-light" />
                   <h3 className="font-serif text-3xl font-bold text-dragon-pink-light mb-8">
                     {t('home.recipe.recipeName')}
@@ -407,7 +407,7 @@ export default function Home() {
               <ScrollReveal delay={0.2}>
                 <div className="relative aspect-square max-w-lg mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-700">
                   {/* Outer Glass Frame */}
-                  <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-[3rem] border-2 border-white/20 shadow-2xl" />
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-md rounded-[3rem] border-2 border-white/20 shadow-2xl" />
                   
                   {/* Inner Image Grid Layer */}
                   <div className="absolute inset-4 rounded-[2.5rem] overflow-hidden border border-white/10">
@@ -459,10 +459,10 @@ export default function Home() {
             alt="Farm Sunrise" 
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-60 will-change-transform"
             width={1920}
             height={1080}
-            style={{ animation: 'carouselScroll 60s ease-in-out infinite alternate' }}
+            style={{ animation: 'breathZoom 22s ease-in-out infinite alternate' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050b07] via-dragon-green-dark/60 to-[#050b07]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050b07_100%)] opacity-80" />
@@ -511,7 +511,7 @@ export default function Home() {
       </section>
 
       {/* Farm Gallery (Masonry Grid) */}
-      <section className="py-32 bg-[#050b07] relative overflow-hidden">
+      <section className="py-32 bg-[#050b07] relative overflow-hidden contain-paint">
         {/* Elite Ambient Glow */}
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-dragon-green/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-dragon-pink/10 rounded-full blur-[120px] pointer-events-none" />
@@ -605,7 +605,7 @@ export default function Home() {
       </section>
 
       {/* Moonlight Bloom Section */}
-      <section className="relative py-32 bg-[#050b07] overflow-hidden">
+      <section className="relative py-32 bg-[#050b07] overflow-hidden contain-paint">
         {/* Animated Stars/Particles Simulation */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse" />

@@ -51,10 +51,10 @@ const CustomCursor = () => {
 
         seedContainerRef.current.appendChild(seed)
 
-        // Clean up after animation completes — no React state update needed
+        // Clean up quickly — reduce DOM overhead
         setTimeout(() => {
             seed.remove()
-        }, 1000)
+        }, 800)
     }, [])
 
     useEffect(() => {
@@ -64,8 +64,8 @@ const CustomCursor = () => {
             mouseY.set(e.clientY)
 
             const now = Date.now()
-            // Increased throttle from 150ms to 400ms to reduce falling seeds
-            if (now - lastSeedRef.current > 400) {
+            // Increased throttle from 400ms to 800ms to significantly reduce DOM nodes
+            if (now - lastSeedRef.current > 800) {
                 spawnSeed(e.clientX, e.clientY)
                 lastSeedRef.current = now
             }
@@ -127,7 +127,7 @@ const CustomCursor = () => {
                     y: mouseY,
                     translateX: '-50%',
                     translateY: '-50%',
-                    willChange: 'transform'
+                    willChange: 'transform, opacity'
                 }}
             >
                 <DragonFruitIcon />

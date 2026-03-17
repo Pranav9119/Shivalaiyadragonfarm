@@ -21,7 +21,11 @@ const allProducts = [
 
 // Memoized carousel card to prevent re-renders
 const CarouselCard = memo(({ product, t }) => (
-  <div className="w-[280px] sm:w-[400px] group flex-shrink-0">
+  <Link
+    to="/products"
+    state={{ fromHome: true, productId: product.titleKey, product }}
+    className="w-[280px] sm:w-[400px] group flex-shrink-0 block cursor-pointer"
+  >
     <div className="relative h-[400px] sm:h-[500px] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border border-cream-dark transition-all duration-500 hover:shadow-glow-lg shadow-xl">
       <img
         src={product.image}
@@ -37,19 +41,15 @@ const CarouselCard = memo(({ product, t }) => (
           {t(product.titleKey)}
         </h3>
         <p className="text-white/80 text-xs sm:text-sm line-clamp-2 mb-4">{t(product.descKey)}</p>
-        <Link
-          to="/products"
-          state={{ fromHome: true, productId: product.titleKey, product }}
-          className="inline-flex items-center gap-2 text-dragon-pink-light font-bold text-sm group-hover:gap-3 transition-all"
-        >
+        <div className="inline-flex items-center gap-2 text-dragon-pink-light font-bold text-sm group-hover:gap-3 transition-all">
           {t('process.learnMore')}
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
-        </Link>
+        </div>
       </div>
     </div>
-  </div>
+  </Link>
 ))
 
 export default function Home() {

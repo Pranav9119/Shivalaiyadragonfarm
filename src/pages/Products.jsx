@@ -10,17 +10,17 @@ import BulkEstimator from '../components/BulkEstimator'
 const freshProducts = [
   { titleKey: 'products.moroccoRed', descKey: 'products.moroccoRedDesc', variant: 'pink', image: '/varieties/Morocco-Red.webp' },
   { titleKey: 'products.mexicanRed', descKey: 'products.mexicanRedDesc', variant: 'pink', image: '/varieties/mexican-red.webp' },
-  { titleKey: 'products.malaysianRed', descKey: 'products.malaysianRedDesc', variant: 'pink', image: '/varieties/malaysian-red.jpg' },
-  { titleKey: 'products.cVariety', descKey: 'products.cVarietyDesc', variant: 'green', image: '/varieties/c-variety.jpg' },
-  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/israelian-yellow.png', imageStyle: 'object-contain scale-[0.85]' },
-  { titleKey: 'products.jumboRed', descKey: 'products.jumboRedDesc', variant: 'pink', image: '/varieties/jumbo-red.jpg' },
-  { titleKey: 'products.americanBeauty', descKey: 'products.americanBeautyDesc', variant: 'pink', image: '/varieties/american-beauty.jpg' },
+  { titleKey: 'products.malaysianRed', descKey: 'products.malaysianRedDesc', variant: 'pink', image: '/varieties/malaysian-red.webp' },
+  { titleKey: 'products.cVariety', descKey: 'products.cVarietyDesc', variant: 'green', image: '/varieties/c-variety.webp' },
+  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/israelian-yellow.webp', imageStyle: 'object-contain scale-[0.85]' },
+  { titleKey: 'products.jumboRed', descKey: 'products.jumboRedDesc', variant: 'pink', image: '/varieties/jumbo-red.webp' },
+  { titleKey: 'products.americanBeauty', descKey: 'products.americanBeautyDesc', variant: 'pink', image: '/varieties/american-beauty.webp' },
 ]
 
 const valueAddedProducts = [
-  { titleKey: 'products.dragonJam', descKey: 'products.dragonJamDesc', variant: 'green', image: '/varieties/dragon-jam.jpg' },
-  { titleKey: 'products.dragonHalva', descKey: 'products.dragonHalvaDesc', variant: 'green', image: '/varieties/dragon-halva.jpg' },
-  { titleKey: 'products.dragonChips', descKey: 'products.dragonChipsDesc', variant: 'pink', image: '/varieties/Dragon-Chips.png' },
+  { titleKey: 'products.dragonJam', descKey: 'products.dragonJamDesc', variant: 'green', image: '/varieties/dragon-jam.webp' },
+  { titleKey: 'products.dragonHalva', descKey: 'products.dragonHalvaDesc', variant: 'green', image: '/varieties/dragon-halva.webp' },
+  { titleKey: 'products.dragonChips', descKey: 'products.dragonChipsDesc', variant: 'pink', image: '/varieties/Dragon-Chips.webp' },
 ]
 
 export default function Products() {

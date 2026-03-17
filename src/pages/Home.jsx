@@ -9,14 +9,14 @@ import BackgroundParticles from '../components/BackgroundParticles'
 const allProducts = [
   { titleKey: 'products.moroccoRed', descKey: 'products.moroccoRedDesc', variant: 'pink', image: '/varieties/Morocco-Red.webp' },
   { titleKey: 'products.mexicanRed', descKey: 'products.mexicanRedDesc', variant: 'pink', image: '/varieties/mexican-red.webp' },
-  { titleKey: 'products.malaysianRed', descKey: 'products.malaysianRedDesc', variant: 'pink', image: '/varieties/malaysian-red.jpg' },
-  { titleKey: 'products.jumboRed', descKey: 'products.jumboRedDesc', variant: 'pink', image: '/varieties/jumbo-red.jpg' },
-  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/israelian-yellow.png' },
-  { titleKey: 'products.americanBeauty', descKey: 'products.americanBeautyDesc', variant: 'pink', image: '/varieties/american-beauty.jpg' },
-  { titleKey: 'products.cVariety', descKey: 'products.cVarietyDesc', variant: 'pink', image: '/varieties/c-variety.jpg' },
-  { titleKey: 'products.dragonJam', descKey: 'products.dragonJamDesc', variant: 'pink', image: '/varieties/dragon-jam.jpg' },
-  { titleKey: 'products.dragonHalva', descKey: 'products.dragonHalvaDesc', variant: 'pink', image: '/varieties/dragon-halva.jpg' },
-  { titleKey: 'products.dragonChips', descKey: 'products.dragonChipsDesc', variant: 'pink', image: '/varieties/Dragon-Chips.png' },
+  { titleKey: 'products.malaysianRed', descKey: 'products.malaysianRedDesc', variant: 'pink', image: '/varieties/malaysian-red.webp' },
+  { titleKey: 'products.jumboRed', descKey: 'products.jumboRedDesc', variant: 'pink', image: '/varieties/jumbo-red.webp' },
+  { titleKey: 'products.israelianYellow', descKey: 'products.israelianYellowDesc', variant: 'pink', image: '/varieties/israelian-yellow.webp' },
+  { titleKey: 'products.americanBeauty', descKey: 'products.americanBeautyDesc', variant: 'pink', image: '/varieties/american-beauty.webp' },
+  { titleKey: 'products.cVariety', descKey: 'products.cVarietyDesc', variant: 'pink', image: '/varieties/c-variety.webp' },
+  { titleKey: 'products.dragonJam', descKey: 'products.dragonJamDesc', variant: 'pink', image: '/varieties/dragon-jam.webp' },
+  { titleKey: 'products.dragonHalva', descKey: 'products.dragonHalvaDesc', variant: 'pink', image: '/varieties/dragon-halva.webp' },
+  { titleKey: 'products.dragonChips', descKey: 'products.dragonChipsDesc', variant: 'pink', image: '/varieties/Dragon-Chips.webp' },
 ]
 
 // Memoized carousel card to prevent re-renders
@@ -224,7 +224,7 @@ export default function Home() {
                 <div className="relative aspect-square sm:aspect-[4/4] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl group border-[8px] border-white z-10">
                   <div className="absolute inset-0 bg-gradient-to-tr from-dragon-green-dark/60 via-transparent to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
                   <img 
-                    src="/varieties/malaysian-red.jpg" 
+                    src="/varieties/malaysian-red.webp" 
                     alt="Sustainable Farming" 
                     loading="lazy" 
                     decoding="async" 
@@ -412,7 +412,7 @@ export default function Home() {
                   {/* Inner Image Grid Layer */}
                   <div className="absolute inset-4 rounded-[2.5rem] overflow-hidden border border-white/10">
                     <img 
-                      src="/varieties/dragon-jam.jpg" 
+                      src="/varieties/dragon-jam.webp" 
                       alt="Dragon Fruit Bowl" 
                       loading="lazy" 
                       decoding="async" 
@@ -437,7 +437,7 @@ export default function Home() {
             {/* Mobile Visual */}
             <div className="lg:hidden w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-2 border-white/10 relative">
               <img 
-                src="/varieties/dragon-jam.jpg" 
+                src="/varieties/dragon-jam.webp" 
                 alt="Dragon Fruit Bowl" 
                 loading="lazy" 
                 decoding="async" 
@@ -655,7 +655,7 @@ export default function Home() {
                   <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
                     <img
-                      src="/varieties/american-beauty.jpg"
+                      src="/varieties/american-beauty.webp"
                       alt="Moonlight Bloom"
                       loading="lazy"
                       decoding="async"

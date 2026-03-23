@@ -1,4 +1,4 @@
-import { useRef, memo } from 'react'
+import { useRef, memo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
@@ -56,6 +56,7 @@ export default function Home() {
   const { t, i18n } = useTranslation()
   const isTamil = i18n.language === 'ta'
   const heroRef = useRef(null)
+  const [farmVideoPlaying, setFarmVideoPlaying] = useState(false)
 
   return (
     <div>
@@ -151,60 +152,6 @@ export default function Home() {
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Health Benefits Section */}
-      <section className="py-24 bg-gradient-to-b from-cream via-cream/50 to-white relative overflow-hidden contain-paint">
-        {/* Elite Animated Background Elements */}
-        <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-dragon-pink/5 rounded-full blur-[100px] pointer-events-none animate-float" />
-        <div className="absolute bottom-10 left-10 w-[600px] h-[600px] bg-dragon-green/5 rounded-full blur-[120px] pointer-events-none animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.8)_0%,_transparent_50%)] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <ScrollReveal>
-            <div className="text-center mb-16 relative">
-              <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-dragon-pink/5 border border-dragon-pink/10 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse mr-2" />
-                <p className="text-dragon-pink font-semibold tracking-widest uppercase text-xs">{t('home.healthBenefits.subtitle')}</p>
-              </div>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-dragon-green mb-6">
-                {t('home.healthBenefits.title')}
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                {t('home.healthBenefits.desc')}
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 cursor-default">
-            {[
-              { id: 'antioxidants', icon: '✨', title: t('home.healthBenefits.antioxidants'), desc: t('home.healthBenefits.antioxidantsDesc'), color: 'dragon-pink', gradient: 'from-dragon-pink/20 to-transparent' },
-              { id: 'immunity', icon: '🛡️', title: t('home.healthBenefits.immunity'), desc: t('home.healthBenefits.immunityDesc'), color: 'dragon-green', gradient: 'from-dragon-green/20 to-transparent' },
-              { id: 'fiber', icon: '🌿', title: t('home.healthBenefits.fiber'), desc: t('home.healthBenefits.fiberDesc'), color: 'dragon-pink', gradient: 'from-dragon-pink/20 to-transparent' },
-              { id: 'heart', icon: '❤️', title: t('home.healthBenefits.heart'), desc: t('home.healthBenefits.heartDesc'), color: 'dragon-green', gradient: 'from-dragon-green/20 to-transparent' }
-            ].map((benefit, index) => (
-              <ScrollReveal key={benefit.id} delay={index * 0.1}>
-                <div className="relative group h-full">
-                  <div className={`absolute -inset-0.5 bg-gradient-to-br ${benefit.gradient} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
-                  <div className={`relative p-8 rounded-[2rem] bg-white/60 backdrop-blur-md border border-white hover:border-${benefit.color}/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-hidden`}>
-                    {/* Decorative Top Gradient */}
-                    <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                    
-                    <div className="relative">
-                      <div className={`absolute inset-0 bg-${benefit.color}/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                      <div className={`relative w-16 h-16 rounded-2xl bg-white border border-cream-dark shadow-sm flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 z-10`}>
-                        {benefit.icon}
-                      </div>
-                    </div>
-                    
-                    <h3 className="font-serif text-2xl font-bold text-dragon-green mb-4 group-hover:text-dragon-pink transition-colors relative z-10">{benefit.title}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed flex-grow relative z-10">{benefit.desc}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>
@@ -494,16 +441,185 @@ export default function Home() {
             <div className="relative w-full max-w-4xl mx-auto group">
               {/* Green Glow Layer */}
               <div className="absolute -inset-4 bg-dragon-green/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-80 transition-opacity duration-700" />
-              
+
               <div className="relative aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border border-white/20 shadow-2xl bg-black">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/lXTEmgxDc9s"
-                  title="Shivalaiya Dragon Farm Tour"
-                  loading="lazy"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                ></iframe>
+                {farmVideoPlaying ? (
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/ziOMvJYX0Og?autoplay=1"
+                    title="Shivalaiya Dragon Farm Experience"
+                    autoPlay
+                    allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  ></iframe>
+                ) : (
+                  <button
+                    onClick={() => setFarmVideoPlaying(true)}
+                    className="relative w-full h-full block group/play focus:outline-none"
+                    aria-label="Play Shivalaiya Dragon Farm Experience video"
+                  >
+                    {/* Custom thumbnail */}
+                    <img
+                      src="/gallery/gallery 1.webp"
+                      alt="Shivalaiya Dragon Farm"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover/play:scale-105"
+                      style={{ objectPosition: 'center bottom' }}
+                      width={1280}
+                      height={720}
+                    />
+                    {/* Dark overlay */}
+                    <div className="absolute inset-0 bg-black/30 group-hover/play:bg-black/20 transition-colors duration-500" />
+                    {/* Play button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative">
+                        {/* Pulsing ring */}
+                        <div className="absolute inset-0 rounded-full bg-dragon-pink/30 animate-ping" />
+                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/60 flex items-center justify-center shadow-2xl group-hover/play:scale-110 group-hover/play:bg-white/30 transition-all duration-300">
+                          <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Caption */}
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+                      <span className="px-4 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-white/80 text-xs font-medium tracking-widest uppercase border border-white/10">
+                        Click to Watch
+                      </span>
+                    </div>
+                  </button>
+                )}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Dinamalar Interview Section */}
+      <section className="relative py-28 overflow-hidden bg-dragon-green-dark">
+        {/* Cinematic background image — same style as Video Tour */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-dragon-green-dark" />
+          <img
+            src="/varieties/Morocco-Red.webp"
+            alt="Farm Background"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover opacity-40 will-change-transform"
+            width={1920}
+            height={1080}
+            style={{ animation: 'breathZoom 22s ease-in-out infinite alternate' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050b07] via-dragon-green-dark/70 to-[#050b07]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050b07_100%)] opacity-70" />
+        </div>
+
+        {/* Cinematic layered glows */}
+        <div className="absolute inset-0 pointer-events-none z-[1]">
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-dragon-pink/10 rounded-full blur-[150px] animate-float" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-dragon-green/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: '3s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-dragon-pink/20 to-transparent" />
+        </div>
+
+        {/* Decorative corner accents */}
+        <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-dragon-pink/30 rounded-tl-2xl pointer-events-none" />
+        <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-dragon-pink/30 rounded-tr-2xl pointer-events-none" />
+        <div className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-dragon-pink/30 rounded-bl-2xl pointer-events-none" />
+        <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-dragon-pink/30 rounded-br-2xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            {/* Top label row */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+              <div className="flex items-center gap-4">
+                {/* Newspaper-style media badge */}
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-dragon-pink/20 to-dragon-pink/5 border border-dragon-pink/40 backdrop-blur-md">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-dragon-pink opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-dragon-pink" />
+                  </span>
+                  <span className="text-dragon-pink font-bold text-xs tracking-[0.2em] uppercase">Live Interview</span>
+                </div>
+                <div className="h-px w-16 bg-gradient-to-r from-dragon-pink/50 to-transparent hidden sm:block" />
+              </div>
+              {/* Dinamalar branding pill */}
+              <div className="px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                <span className="text-white/60 text-sm font-medium tracking-widest">DINAMALAR × SHIVALAIYA</span>
+              </div>
+            </div>
+
+            {/* Two-column layout */}
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+              {/* Left — Editorial text column */}
+              <div className="flex-1 lg:max-w-[420px] text-left">
+                {/* Section number */}
+                <p className="font-serif text-[80px] sm:text-[100px] font-bold leading-none text-white/[0.04] select-none mb-[-30px]">02</p>
+
+                <h2 className="font-serif text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+                  As Featured in{' '}
+                  <span className="relative inline-block">
+                    <span className="relative z-10 gradient-text">Dinamalar</span>
+                    <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-dragon-pink to-transparent" />
+                  </span>
+                </h2>
+
+                <p className="text-cream/60 text-base sm:text-lg leading-relaxed mb-8 font-light">
+                  One of Tamil Nadu's most respected media houses visited our farm to document the story behind Shivalaiya Dragon Farm — our passion, our process, and our journey.
+                </p>
+
+                {/* Pull quote */}
+                <div className="relative pl-6 mb-10 border-l-2 border-dragon-pink/50">
+                  <div className="absolute -left-3 top-0 w-6 h-6 rounded-full bg-dragon-pink/20 border border-dragon-pink/40 flex items-center justify-center">
+                    <span className="text-dragon-pink text-xs font-bold">"</span>
+                  </div>
+                  <p className="text-white/80 italic text-sm sm:text-base leading-relaxed font-light">
+                    A farm rooted in dedication, growing dragon fruit the organic way — featured exclusively on Dinamalar.
+                  </p>
+                </div>
+
+                {/* Media credentials row */}
+                <div className="flex items-center gap-6">
+                  <div className="text-center">
+                    <p className="text-white font-bold text-xl font-serif">2M+</p>
+                    <p className="text-white/40 text-xs uppercase tracking-widest mt-1">Readers</p>
+                  </div>
+                  <div className="w-px h-10 bg-white/10" />
+                  <div className="text-center">
+                    <p className="text-white font-bold text-xl font-serif">Tamil Nadu</p>
+                    <p className="text-white/40 text-xs uppercase tracking-widest mt-1">Coverage</p>
+                  </div>
+                  <div className="w-px h-10 bg-white/10" />
+                  <div className="text-center">
+                    <p className="text-dragon-pink font-bold text-xl font-serif">Featured</p>
+                    <p className="text-white/40 text-xs uppercase tracking-widest mt-1">Exclusive</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right — Video embed with ornate frame */}
+              <div className="flex-1 w-full relative">
+                {/* Outer decorative glow ring */}
+                <div className="absolute -inset-6 bg-gradient-to-br from-dragon-pink/15 via-transparent to-dragon-green/15 rounded-[3rem] blur-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Frame border */}
+                <div className="relative p-[3px] rounded-[2rem] bg-gradient-to-br from-dragon-pink/60 via-white/10 to-dragon-green/40 shadow-2xl">
+                  <div className="relative rounded-[1.8rem] overflow-hidden bg-black aspect-video shadow-inner">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/lXTEmgxDc9s"
+                      title="Dinamalar Interview — Shivalaiya Dragon Farm"
+                      loading="lazy"
+                      allowFullScreen
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    ></iframe>
+                  </div>
+                </div>
+
+                {/* Floating caption tag */}
+                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#0d1a10] border border-dragon-pink/30 rounded-full shadow-xl backdrop-blur-md whitespace-nowrap">
+                  <span className="text-dragon-pink-light text-xs font-semibold tracking-widest uppercase">📰 Dinamalar Exclusive</span>
+                </div>
               </div>
             </div>
           </ScrollReveal>

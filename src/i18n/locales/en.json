@@ -11,7 +11,7 @@
   "home": {
     "brand": "Shivalaiya Dragon Farm",
     "heroTitle": "Delicious Dragon Fruit",
-    "heroSubtitle": "Farm to Home",
+    "heroSubtitle": "Bulk Orders Above 100 kg",
     "heroDesc": "Experience the finest organic dragon fruit, cultivated with sustainable practices and delivered with exceptional quality. Nature's exotic treasure.",
     "exploreProducts": "Explore Products",
     "ourStory": "Our Story",
@@ -38,8 +38,8 @@
       "sustainableDesc": "Water-efficient irrigation and zero-waste farming.",
       "handPicked": "Hand-Picked",
       "handPickedDesc": "Harvested exactly at peak ripeness for maximum sweetness.",
-      "farmToHome": "Farm to Home",
-      "farmToHomeDesc": "Delivered directly from our orchards to your doorstep."
+      "farmToHome": "Bulk Orders",
+      "farmToHomeDesc": "Specializing in bulk supply for retailers and distributors (Min 100kg)."
     },
     "recipe": {
       "title": "A Taste of Paradise",
@@ -263,11 +263,11 @@
     "harvestDesc": "Harvesting begins at 4:00 AM to preserve fruit temperature. We only pick once the Brix level (sweetness) reaches its peak, ensuring maximum natural sugar.",
     "harvestTech": "Picked at Stage 3 color ripeness (approx. 30-35 days post-bloom).",
     "harvestDive": "Timing is everything. We monitor the sugar development daily and harvest only during the coolest part of the day (early morning) to ensure the fruit remains firm and fresh. The fruits are placed in padded crates immediately to prevent any bruising.",
-    "harvestStat": "24h Farm-to-Shipping",
+    "harvestStat": "Bulk Quality Control",
     "qualityDelivery": "Quality & Delivery",
-    "qualityDeliveryDesc": "Post-harvest, fruits undergo ultrasonic cleaning and air-drying before being sorted by weight. We ensure a 24-hour turnaround from farm to regional hubs.",
+    "qualityDeliveryDesc": "Post-harvest, fruits undergo ultrasonic cleaning and air-drying before being sorted by weight. We ensure efficient bulk delivery to regional hubs.",
     "qualityDeliveryTech": "Weight-based sorting: A-Grade (400g+), B-Grade (250-400g). Cold-chain ready packaging.",
-    "qualityDeliveryDive": "Our sorting process uses sensitive electronic scales to ensure consistency. We use custom-ventilated packaging to allow the fruit to 'breathe' during transit, maintaining that 'just-picked' flavor until it reaches your door. Every batch is tracked from the specific trellis it came from."
+    "qualityDeliveryDive": "Our sorting process uses sensitive electronic scales to ensure consistency. We use custom-ventilated packaging to allow the fruit to 'breathe' during transit, maintaining that 'just-picked' flavor until it reaches its destination. Every batch is tracked from the specific trellis it came from."
   },
   "contact": {
     "getInTouch": "Get in Touch",
@@ -313,14 +313,14 @@
       "q3": "Is your dragon fruit certified organic?",
       "a3": "Yes, we follow strictly organic farming practices. We do not use any chemical pesticides or synthetic fertilizers.",
       "q4": "Do you ship nationwide?",
-      "a4": "Currently, we focus on local and regional distribution to ensure peak freshness. Please contact us to check availability in your area.",
+      "a4": "Currently, we only offer bulk orders (minimum 100 kg) for regional distribution to ensure peak freshness and quality scale. Please contact us to check availability in your area.",
       "q5": "What is the best way to store dragon fruit?",
       "a5": "Dragon fruit is best stored in the refrigerator. It can stay fresh for up to two weeks when kept cool."
     }
   },
   "footer": {
     "brand": "Shivalaiya Dragon Farm",
-    "brandDesc": "Cultivating premium organic dragon fruit with sustainable farming practices. Nature's finest, delivered fresh from our farm to your table.",
+    "brandDesc": "Cultivating premium organic dragon fruit with sustainable farming practices. Nature's finest, delivered fresh in bulk from our farm to yours.",
     "quickLinks": "Quick Links",
     "contactUs": "Contact Us",
     "copyright": "© {{year}} Shivalaiya Dragon Farm. All rights reserved.",

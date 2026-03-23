@@ -294,108 +294,7 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-         {/* Featured Recipe / How to Enjoy Section */}
-      <section className="py-32 relative overflow-hidden bg-dragon-green-dark contain-paint">
-        {/* Immersive Background */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/varieties/dragon-jam.jpg" 
-            alt="How to Enjoy" 
-            loading="lazy" 
-            decoding="async" 
-            className="w-full h-full object-cover opacity-30" 
-            width={1920}
-            height={1080}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-dragon-green-dark via-dragon-green-dark/80 to-transparent z-10" />
-          {/* Animated Glow Blobs */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-dragon-pink/20 rounded-full blur-[100px] animate-pulse-glow z-10" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-dragon-green-light/20 rounded-full blur-[120px] animate-float z-10" style={{ animationDelay: '2s' }} />
-        </div>
 
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-            {/* Left Content Area */}
-            <div className="flex-1 lg:max-w-xl">
-              <ScrollReveal>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-dragon-pink/30 bg-dragon-pink/10 backdrop-blur-md">
-                  <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse" />
-                  <p className="text-dragon-pink-light font-bold tracking-widest uppercase text-xs">{t('home.recipe.subtitle')}</p>
-                </div>
-                
-                <h2 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                  {t('home.recipe.title')}
-                </h2>
-                
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden group hover:border-dragon-pink/30 transition-colors duration-500">
-                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-dragon-pink to-dragon-green-light" />
-                  <h3 className="font-serif text-3xl font-bold text-dragon-pink-light mb-8">
-                    {t('home.recipe.recipeName')}
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    {['step1', 'step2', 'step3'].map((step, idx) => (
-                      <div key={step} className="flex gap-6 group/step">
-                        <div className="text-2xl font-serif font-bold text-white/20 group-hover/step:text-dragon-pink transition-colors duration-300 min-w-[2rem] pt-1">
-                          0{idx + 1}
-                        </div>
-                        <p className="text-cream-dark/80 leading-relaxed text-lg group-hover/step:text-white transition-colors duration-300">
-                          {t(`home.recipe.${step}`)}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Right Visual Area - Interactive Bento/Card */}
-            <div className="flex-1 w-full lg:w-auto relative hidden lg:block">
-              <ScrollReveal delay={0.2}>
-                <div className="relative aspect-square max-w-lg mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-700">
-                  {/* Outer Glass Frame */}
-                  <div className="absolute inset-0 bg-white/5 backdrop-blur-md rounded-[3rem] border-2 border-white/20 shadow-2xl" />
-                  
-                  {/* Inner Image Grid Layer */}
-                  <div className="absolute inset-4 rounded-[2.5rem] overflow-hidden border border-white/10">
-                    <img 
-                      src="/varieties/dragon-jam.webp" 
-                      alt="Dragon Fruit Bowl" 
-                      loading="lazy" 
-                      decoding="async" 
-                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-[2s] ease-out" 
-                      width={800}
-                      height={600}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-dragon-pink/20 to-transparent opacity-60 mix-blend-overlay" />
-                  </div>
-                  
-                  {/* Floating Enjoy Badge */}
-                  <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-dragon-green/90 backdrop-blur-md rounded-full border border-white/20 shadow-2xl flex items-center justify-center animate-float">
-                    <p className="text-center">
-                      <span className="block text-3xl mb-1">✨</span>
-                      <span className="block font-serif italic text-dragon-pink-light font-bold">Enjoy!</span>
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-            
-            {/* Mobile Visual */}
-            <div className="lg:hidden w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-2 border-white/10 relative">
-              <img 
-                src="/varieties/dragon-jam.webp" 
-                alt="Dragon Fruit Bowl" 
-                loading="lazy" 
-                decoding="async" 
-                className="w-full h-full object-cover" 
-                width={600}
-                height={600}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
       {/* Video Tour Teaser */}
       <section className="py-32 relative flex items-center justify-center overflow-hidden min-h-[80vh]">
         <div className="absolute inset-0 z-0">
@@ -717,6 +616,109 @@ export default function Home() {
 
           {/* Fade out bottom */}
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#050b07] to-transparent z-20 pointer-events-none" />
+        </div>
+      </section>
+
+      {/* Featured Recipe / How to Enjoy Section */}
+      <section className="py-32 relative overflow-hidden bg-dragon-green-dark contain-paint">
+        {/* Immersive Background */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/varieties/dragon-jam.jpg" 
+            alt="How to Enjoy" 
+            loading="lazy" 
+            decoding="async" 
+            className="w-full h-full object-cover opacity-30" 
+            width={1920}
+            height={1080}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dragon-green-dark via-dragon-green-dark/80 to-transparent z-10" />
+          {/* Animated Glow Blobs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-dragon-pink/20 rounded-full blur-[100px] animate-pulse-glow z-10" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-dragon-green-light/20 rounded-full blur-[120px] animate-float z-10" style={{ animationDelay: '2s' }} />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            {/* Left Content Area */}
+            <div className="flex-1 lg:max-w-xl">
+              <ScrollReveal>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-dragon-pink/30 bg-dragon-pink/10 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-dragon-pink animate-pulse" />
+                  <p className="text-dragon-pink-light font-bold tracking-widest uppercase text-xs">{t('home.recipe.subtitle')}</p>
+                </div>
+                
+                <h2 className="font-serif text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                  {t('home.recipe.title')}
+                </h2>
+                
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 mb-10 shadow-2xl relative overflow-hidden group hover:border-dragon-pink/30 transition-colors duration-500">
+                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-dragon-pink to-dragon-green-light" />
+                  <h3 className="font-serif text-3xl font-bold text-dragon-pink-light mb-8">
+                    {t('home.recipe.recipeName')}
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    {['step1', 'step2', 'step3'].map((step, idx) => (
+                      <div key={step} className="flex gap-6 group/step">
+                        <div className="text-2xl font-serif font-bold text-white/20 group-hover/step:text-dragon-pink transition-colors duration-300 min-w-[2rem] pt-1">
+                          0{idx + 1}
+                        </div>
+                        <p className="text-cream-dark/80 leading-relaxed text-lg group-hover/step:text-white transition-colors duration-300">
+                          {t(`home.recipe.${step}`)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right Visual Area - Interactive Bento/Card */}
+            <div className="flex-1 w-full lg:w-auto relative hidden lg:block">
+              <ScrollReveal delay={0.2}>
+                <div className="relative aspect-square max-w-lg mx-auto transform rotate-3 hover:rotate-0 transition-transform duration-700">
+                  {/* Outer Glass Frame */}
+                  <div className="absolute inset-0 bg-white/5 backdrop-blur-md rounded-[3rem] border-2 border-white/20 shadow-2xl" />
+                  
+                  {/* Inner Image Grid Layer */}
+                  <div className="absolute inset-4 rounded-[2.5rem] overflow-hidden border border-white/10">
+                    <img 
+                      src="/varieties/dragon-jam.webp" 
+                      alt="Dragon Fruit Bowl" 
+                      loading="lazy" 
+                      decoding="async" 
+                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-[2s] ease-out" 
+                      width={800}
+                      height={600}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-dragon-pink/20 to-transparent opacity-60 mix-blend-overlay" />
+                  </div>
+                  
+                  {/* Floating Enjoy Badge */}
+                  <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-dragon-green/90 backdrop-blur-md rounded-full border border-white/20 shadow-2xl flex items-center justify-center animate-float">
+                    <p className="text-center">
+                      <span className="block text-3xl mb-1">✨</span>
+                      <span className="block font-serif italic text-dragon-pink-light font-bold">Enjoy!</span>
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+            
+            {/* Mobile Visual */}
+            <div className="lg:hidden w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-2 border-white/10 relative">
+              <img 
+                src="/varieties/dragon-jam.webp" 
+                alt="Dragon Fruit Bowl" 
+                loading="lazy" 
+                decoding="async" 
+                className="w-full h-full object-cover" 
+                width={600}
+                height={600}
+              />
+            </div>
+          </div>
         </div>
       </section>
 

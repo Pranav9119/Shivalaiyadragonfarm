@@ -31,11 +31,11 @@ export default function BackToTop() {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-40 right-4 md:bottom-8 md:right-8 z-50 p-3 md:p-4 rounded-full bg-gradient-to-br from-dragon-pink to-dragon-pink-dark text-white shadow-2xl hover:shadow-dragon-pink/50 hover:scale-110 transition-all duration-300 group animate-fade-in-up"
+                    className="fixed bottom-24 left-4 md:left-auto md:right-8 md:bottom-8 z-[110] p-3 md:p-4 rounded-full bg-white/90 backdrop-blur-md text-dragon-green shadow-2xl border border-dragon-green/20 hover:scale-110 transition-all duration-300 group animate-fade-in-up"
                     aria-label="Back to top"
                 >
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-dragon-pink rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10" />
+                    {/* Pulsing halo */}
+                    <div className="absolute inset-0 bg-dragon-green/20 rounded-full animate-ping opacity-20" />
 
                     {/* Arrow icon */}
                     <svg

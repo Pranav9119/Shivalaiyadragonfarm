@@ -70,10 +70,17 @@ export default function ProductCard({ titleKey, title, description, image, varia
         <p className="mt-2 text-gray-600 text-sm leading-relaxed line-clamp-2 relative z-10">
           {displayDesc}
         </p>
-        <div className="mt-4 flex items-center gap-2 relative z-10">
-          <span className={`inline-block w-3 h-3 rounded-full ${variant === 'pink' ? 'bg-dragon-pink' : 'bg-dragon-green'
-            } group-hover:animate-pulse-glow`} />
-          <span className="text-sm font-medium text-dragon-green">{t('common.organicPremium')}</span>
+        <div className="mt-4 flex flex-wrap items-center gap-3 relative z-10">
+          <div className="flex items-center gap-2">
+            <span className={`inline-block w-3 h-3 rounded-full ${variant === 'pink' ? 'bg-dragon-pink' : 'bg-dragon-green'
+              } group-hover:animate-pulse-glow`} />
+            <span className="text-sm font-medium text-dragon-green">{t('common.organicPremium')}</span>
+          </div>
+          <div className="flex items-center gap-1.5 px-2 py-0.5 bg-green-50 rounded-md border border-green-100">
+            <span className="text-[10px] font-bold text-green-600 uppercase tracking-tighter">In Stock</span>
+            <span className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+          </div>
+          <span className="text-[10px] font-bold text-dragon-pink uppercase tracking-tighter opacity-70 italic">Freshly Harvested</span>
         </div>
       </div>
     </motion.div >

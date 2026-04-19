@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function BulkEstimator({ products }) {
     const { t } = useTranslation()
-    const [quantity, setQuantity] = useState(500)
+    const [quantity, setQuantity] = useState(10)
     const [selectedProduct, setSelectedProduct] = useState(products[0]?.titleKey || '')
     const [estimatedDippers, setEstimatedDippers] = useState(0)
 
@@ -67,15 +67,15 @@ export default function BulkEstimator({ products }) {
                             </div>
                             <input
                                 type="range"
-                                min="100"
+                                min="10"
                                 max="5000"
-                                step="50"
+                                step="10"
                                 value={quantity}
                                 onChange={(e) => setQuantity(parseInt(e.target.value))}
                                 className="w-full h-2 bg-cream-dark rounded-lg appearance-none cursor-pointer accent-dragon-pink"
                             />
                             <div className="flex justify-between mt-2 text-xs text-gray-400 font-bold uppercase tracking-tighter">
-                                <span>100kg</span>
+                                <span>10kg</span>
                                 <span>2500kg</span>
                                 <span>5000kg</span>
                             </div>
@@ -115,15 +115,17 @@ export default function BulkEstimator({ products }) {
                             {t('products.weightPerBox')}
                         </p>
 
-                        <Link
-                            to="/contact"
+                        <a
+                            href={`https://wa.me/918675522223?text=${encodeURIComponent(`${t('products.bulkEstimatorTitle')}: ${quantity}kg of ${t(selectedProduct)}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-dragon-green hover:bg-dragon-pink hover:text-white font-bold rounded-2xl transition-all shadow-xl group"
                         >
                             {t('products.getQuote')}
                             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ const WhatsAppButton = () => {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
 
     return (
-    return (
         <div className="fixed bottom-24 right-4 md:bottom-28 md:right-8 z-[100] flex flex-col items-end gap-4">
             {/* Trust Label */}
             <AnimatePresence>
